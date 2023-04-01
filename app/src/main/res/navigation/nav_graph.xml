@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/workoutFragment">
+    <fragment
+        android:id="@+id/guideFragment"
+        android:name="com.mte.fitnessapp.ui.home.guide.GuideFragment"
+        android:label="fragment_guide"
+        tools:layout="@layout/fragment_guide">
+        <action
+            android:id="@+id/action_guideFragment_to_nutrientsFragment"
+            app:destination="@id/nutrientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nutrientsFragment"
+        android:name="com.mte.fitnessapp.ui.home.guide.NutrientsFragment"
+        android:label="fragment_nutrients"
+        tools:layout="@layout/fragment_nutrients">
+        <action
+            android:id="@+id/action_nutrientsFragment_to_guideFragment"
+            app:destination="@id/guideFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.mte.fitnessapp.ui.home.workout.WorkoutFragment"
+        android:label="fragment_workout"
+        tools:layout="@layout/fragment_workout" />
+    <fragment
+        android:id="@+id/socialFragment"
+        android:name="com.mte.fitnessapp.ui.home.social.SocialFragment"
+        android:label="fragment_social"
+        tools:layout="@layout/fragment_social" />
+    <fragment
+        android:id="@+id/utilityFragment"
+        android:name="com.mte.fitnessapp.ui.home.utility.UtilityFragment"
+        android:label="fragment_utility"
+        tools:layout="@layout/fragment_utility" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mte.fitnessapp.ui.home.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

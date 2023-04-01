@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/registerbg"
+    tools:context=".ui.authentication.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="#19FFFFFF"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="Full Name"
+            android:textColorHint="#fffbf8"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/btn"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fffbf8"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColorHint="#fffbf8"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signupBtn"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:text="SIGN UP"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btnclr"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#3fff"
+            android:layout_marginTop="15dp"/>
+        <TextView
+            android:id="@+id/alreadyHave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account?"
+            android:layout_marginTop="10dp"
+            android:textColor="#fffbf8"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

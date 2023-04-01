@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#252525"
+    tools:context=".ui.home.utility.UtilityFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rajdhani_bold"
+        android:text="CALCULATORS"
+        android:textAlignment="center"
+        android:textColor="#E1CB0A"
+        android:textSize="40sp"
+        android:layout_marginTop="40dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:adjustViewBounds="true"
+                android:layout_weight="1"
+                android:src="@drawable/weighticon"
+                app:shapeAppearanceOverlay="@style/roundImageView" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@drawable/calculatoricon"
+                app:shapeAppearanceOverlay="@style/roundImageView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:adjustViewBounds="true"
+                android:layout_weight="1"
+                android:src="@drawable/percenticon"
+                app:shapeAppearanceOverlay="@style/roundImageView" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@drawable/dumbbellicon"
+                app:shapeAppearanceOverlay="@style/roundImageView" />
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

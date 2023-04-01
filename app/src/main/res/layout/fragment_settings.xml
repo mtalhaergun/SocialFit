@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.profile.SettingsFragment"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="18dp"
+                android:text="Name"
+                android:textSize="21sp" />
+
+            <EditText
+                android:id="@+id/editTextAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="18dp"
+                android:text="E-Mail"
+                android:textSize="21sp" />
+
+
+            <EditText
+                android:id="@+id/editTextEposta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Update My Information:"
+                    android:layout_marginTop="9dp"
+                    android:textSize="21sp"
+                    android:layout_marginStart="18dp"/>
+                <ImageView
+                    android:id="@+id/buttonGuncelle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/buttonupdate"
+                    android:layout_marginStart="110dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#70000000"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginStart="17dp"
+                />
+
+            <TextView
+                android:id="@+id/resetparola"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="21sp"
+                android:layout_marginStart="18dp"
+                android:text="Reset Password"
+                android:textColor="#E1CB0A"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#70000000"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginStart="17dp"
+                />
+            <TextView
+                android:id="@+id/deleteAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="21sp"
+                android:layout_marginStart="18dp"
+                android:text="Delete My Account"
+                android:textColor="#9A0202"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#70000000"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginStart="17dp"
+                />
+            <TextView
+                android:id="@+id/cikisYap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="21sp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="18dp"
+                android:text="Logout"
+                android:textColor="#E1CB0A"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#70000000"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginBottom="3dp"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

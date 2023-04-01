@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1CB0A"
+    tools:context=".ui.home.profile.ProfileFragment">
+
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="125dp"
+                android:background="@drawable/profilebg"
+                android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="40dp"
+                android:textAlignment="center"
+                android:text="Talha Ergün"
+                android:textColor="#CD252525"
+                android:textSize="29sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/profileBarNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/profileName"
+                android:layout_marginTop="3dp"
+                android:background="#FAFAFA"
+                android:scrollIndicators="left"
+                app:itemIconSize="44dp"
+                app:menu="@menu/profile_bar" />
+
+            <FrameLayout
+                android:id="@+id/profileContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/profileBarNavigation">
+
+
+            </FrameLayout>
+
+
+        </RelativeLayout>
+
+<!--    <com.mikhaellopez.circularimageview.CircularImageView-->
+<!--        android:layout_width="160dp"-->
+<!--        android:layout_height="160dp"-->
+<!--        android:layout_marginStart="123dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:src="@drawable/avatar"-->
+<!--        app:civ_border_color="#EFEEEE"-->
+<!--        app:civ_border_width="8dp"-->
+<!--        app:civ_shadow="true"-->
+<!--        app:civ_shadow_color="#353535"-->
+<!--        app:civ_shadow_radius="5dp"-->
+<!--        />-->
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/avatar"
+            android:layout_gravity="center"
+            app:civ_border_color="#EFEEEE"
+            app:civ_border_width="8dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="#353535"
+            app:civ_shadow_radius="5dp" />
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.guide.GuideFragment">
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/guideContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#252525">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/rajdhani_bold"
+                    android:text="HANDBOOK"
+                    android:textAlignment="center"
+                    android:textColor="#E1CB0A"
+                    android:textSize="40sp" />
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/caloriImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/caloriesimage"
+                    app:shapeAppearanceOverlay="@style/roundImageView" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/caloriImage"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="0dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/supplementsImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:adjustViewBounds="true"
+                        android:layout_weight="1"
+                        android:src="@drawable/supplementsimage"
+                        app:shapeAppearanceOverlay="@style/roundImageView" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/musclegroupsImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/musclegropusimage"
+                        app:shapeAppearanceOverlay="@style/roundImageView" />
+                </LinearLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/guideImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearLayout"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/guideimage"
+                    app:shapeAppearanceOverlay="@style/roundImageView" />
+
+            </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>
