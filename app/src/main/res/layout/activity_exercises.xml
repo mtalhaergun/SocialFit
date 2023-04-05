@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,21 +8,12 @@
     android:orientation="vertical"
     tools:context=".ui.exercises.ExercisesActivity">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="scrollable"
-            android:background="#191919"
-            app:tabTextColor="#F1D800"
-            app:tabIndicatorGravity="bottom"
-            app:tabIndicatorHeight="5dp"
-            app:tabIndicatorColor="#F1D800"/>
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPagerExercises"
-            android:background="#252525"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
 
-
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_exercises" />
 </LinearLayout>

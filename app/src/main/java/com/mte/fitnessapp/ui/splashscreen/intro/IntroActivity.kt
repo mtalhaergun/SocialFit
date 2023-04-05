@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.mte.fitnessapp.ui.authentication.LoginActivity
-import com.mte.fitnessapp.ViewPagerAdapter
 import com.mte.fitnessapp.databinding.ActivityIntroBinding
 
 class IntroActivity : AppCompatActivity() {

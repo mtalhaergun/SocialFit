@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_exercises"
+    app:startDestination="@id/exercisesFragment">
+
+    <fragment
+        android:id="@+id/exercisesFragment"
+        android:name="com.mte.fitnessapp.ui.exercises.ExercisesFragment"
+        android:label="fragment_exercises"
+        tools:layout="@layout/fragment_exercises" />
+</navigation>
