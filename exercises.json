@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Barbell Curl",
+    "category": "...",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+  {
+    "id": 2,
+    "name": "Hammer Curl",
+    "category": "...",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+    {
+    "id": 3,
+    "name": "Incline Curl",
+    "category": "...",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+    {
+    "id": 4,
+    "name": "Cable Curl",
+    "category": "...",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+    {
+    "id": 5,
+    "name": "Chin-up",
+    "category": "...",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+    {
+    "id": 6,
+    "name": "Concentration Curl",
+    "category": "...",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  }
+]
