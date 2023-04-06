@@ -13,57 +13,60 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        app:cardBackgroundColor="#E1CB0A"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="#252525"
         app:strokeWidth="4dp"
-        app:strokeColor="@color/black"
+        app:strokeColor="#E1CB0A"
         app:cardCornerRadius="8dp"
-        app:cardElevation="2dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/exerciseImageCard"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="64dp"
-                app:strokeWidth="3dp"
-                app:strokeColor="#E1CB0A">
+                android:layout_width="190dp"
+                android:layout_height="170dp">
 
                 <ImageView
                     android:id="@+id/exerciseImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background" />
+                    load_image="@{String.valueOf(exercise.imageUrl)}"/>
 
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/exerciseName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@id/exerciseImageCard"
-                android:layout_alignParentEnd="true"
-                android:text="@{exercise.name}"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/exerciseNameCard"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                app:cardBackgroundColor="#E1CB0A"
+                app:cardCornerRadius="8dp"
+                android:layout_below="@id/exerciseImageCard">
 
+                <TextView
+                    android:id="@+id/exerciseName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@{exercise.name}"
+                    android:textColor="#252525"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>

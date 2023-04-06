@@ -48,23 +48,29 @@ class ExercisesFragment : Fragment() {
     fun observeEvents() {
         viewModel.exercisesResponse.observe(viewLifecycleOwner, Observer {
             exercises = it
+            adapterExercise.setExercises(exercises)
         })
     }
 
     fun createRv(){
         adapterCategory = CategoryAdapter(object : CategoryClickListener{
             override fun onCategoryClick(category: String) {
-                var listExercise = arrayListOf<ExercisesItem>()
-                for (item in exercises){
-                    if(item.category == category){
-                        listExercise.add(item)
+                if(category != "All"){
+                    var listExercise = arrayListOf<ExercisesItem>()
+                    for (item in exercises){
+                        if(item.category == category){
+                            listExercise.add(item)
+                        }
                     }
+                    adapterExercise.setExercises(listExercise)
+                }else{
+                    adapterExercise.setExercises(exercises)
                 }
-                adapterExercise.setExercises(listExercise)
             }
         })
+        categories.add("All")
         categories.add("Biceps")
-        categories.add("Tripceps")
+        categories.add("Triceps")
         categories.add("Chest")
         categories.add("Back")
         categories.add("Shoulders")

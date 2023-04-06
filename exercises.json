@@ -5,7 +5,7 @@
     "category": "Biceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/kwG2ipFRgfo/mqdefault.jpg"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "category": "Biceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/TwD-YGVP4Bk/mqdefault.jpg"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "category": "Biceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/NHUVgJJ3MBA/mqdefault.jpg"
   },
   {
     "id": 4,
@@ -29,15 +29,15 @@
     "category": "Biceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/-n7wb4WPdic/mqdefault.jpg"
   },
   {
     "id": 5,
-    "name": "Chin-up",
+    "name": "Reverse Barbell Curl",
     "category": "Biceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/nRgxYX2Ve9w/mqdefault.jpg"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "category": "Biceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/0AUGkch3tzc/mqdefault.jpg"
   },
   {
     "id": 7,
@@ -53,23 +53,23 @@
     "category": "Triceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/c3ZGl4pAwZ4/mqdefault.jpg"
   },
   {
     "id": 8,
     "name": "Push Up",
-    "category": "Triceps",
+    "category": "Chest",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/o-NC_xXrkDI/mqdefault.jpg"
   },
   {
     "id": 9,
-    "name": "Board Press",
+    "name": "Dumbbell Kick",
     "category": "Triceps",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/z3sm6YgpJho/mqdefault.jpg"
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@
     "category": "Chest",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/rT7DgCr-3pg/mqdefault.jpg"
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@
     "category": "Chest",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/VmB1G1K7v94/mqdefault.jpg"
   },
   {
     "id": 12,
@@ -93,6 +93,6 @@
     "category": "Chest",
     "description": "...",
     "videoUrl": "...",
-    "imageUrl": "..."
+    "imageUrl": "https://img.youtube.com/vi/eozdVDA78K0/mqdefault.jpg"
   }
 ]
