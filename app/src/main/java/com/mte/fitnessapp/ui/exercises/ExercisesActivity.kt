@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mte.fitnessapp.databinding.ActivityExercisesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExercisesActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityExercisesBinding
