@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Barbell Curl",
-    "category": "...",
+    "category": "Biceps",
     "description": "...",
     "videoUrl": "...",
     "imageUrl": "..."
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "name": "Hammer Curl",
-    "category": "...",
+    "category": "Biceps",,
     "description": "...",
     "videoUrl": "...",
     "imageUrl": "..."
@@ -18,7 +18,7 @@
     {
     "id": 3,
     "name": "Incline Curl",
-    "category": "...",
+    "category": "Biceps",,
     "description": "...",
     "videoUrl": "...",
     "imageUrl": "..."
@@ -26,7 +26,7 @@
     {
     "id": 4,
     "name": "Cable Curl",
-    "category": "...",
+    "category": "Biceps",,
     "description": "...",
     "videoUrl": "...",
     "imageUrl": "..."
@@ -34,7 +34,7 @@
     {
     "id": 5,
     "name": "Chin-up",
-    "category": "...",
+    "category": "Biceps",,
     "description": "...",
     "videoUrl": "...",
     "imageUrl": "..."
@@ -42,9 +42,63 @@
     {
     "id": 6,
     "name": "Concentration Curl",
-    "category": "...",
+    "category": "Biceps",,
     "description": "...",
     "videoUrl": "...",
     "imageUrl": "..."
-  }
+  },
+  },
+    {
+    "id": 7,
+    "name": "Bench Dips",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+  },
+    {
+    "id": 8,
+    "name": "Push Up",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+  },
+    {
+    "id": 9,
+    "name": "Board Press",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+  },
+    {
+    "id": 10,
+    "name": "Barbell Bench Press",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+  },
+    {
+    "id": 11,
+    "name": "Dumbbell Bench Press",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
+  },
+    {
+    "id": 12,
+    "name": "Chest Fly",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "...",
+    "imageUrl": "..."
+  },
 ]

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="exercise"
+            type="com.mte.fitnessapp.model.ExercisesItem" />
+        <variable
+            name="exerciseClickListener"
+            type="com.mte.fitnessapp.ui.exercises.listeners.ExerciseClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        app:cardBackgroundColor="#E1CB0A"
+        app:strokeWidth="4dp"
+        app:strokeColor="@color/black"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/exerciseImageCard"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="64dp"
+                app:strokeWidth="3dp"
+                app:strokeColor="#E1CB0A">
+
+                <ImageView
+                    android:id="@+id/exerciseImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/exerciseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/exerciseImageCard"
+                android:layout_alignParentEnd="true"
+                android:text="@{exercise.name}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
