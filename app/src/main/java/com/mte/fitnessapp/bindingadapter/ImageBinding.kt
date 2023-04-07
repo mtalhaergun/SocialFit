@@ -9,8 +9,8 @@ class ImageBinding {
 
         @BindingAdapter("load_image")
         @JvmStatic
-        fun loadImage(imageView: ImageView, characterImage : String){
-            val imageUrl = characterImage
+        fun loadImage(imageView: ImageView, videoId : String){
+            val imageUrl = "https://img.youtube.com/vi/${videoId}/maxresdefault.jpg"
             imageView.loadImage(imageUrl)
         }
 

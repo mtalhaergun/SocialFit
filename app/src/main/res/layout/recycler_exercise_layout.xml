@@ -19,11 +19,12 @@
         android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
         app:cardBackgroundColor="#252525"
-        app:strokeWidth="4dp"
+        app:strokeWidth="2dp"
         app:strokeColor="#E1CB0A"
         app:cardCornerRadius="8dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:onClick="@{() -> exerciseClickListener.onExerciseClick(exercise)}">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -39,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    load_image="@{String.valueOf(exercise.imageUrl)}"/>
+                    load_image="@{String.valueOf(exercise.videoUrl)}"/>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -61,8 +62,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="@{exercise.name}"
+                    android:maxLines="1"
                     android:textColor="#252525"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:textStyle="bold"
                     android:textAlignment="center"/>
 

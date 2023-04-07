@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentExercisesBinding
 import com.mte.fitnessapp.model.ExercisesItem
@@ -81,7 +82,8 @@ class ExercisesFragment : Fragment() {
 
         adapterExercise = ExerciseAdapter(object : ExerciseClickListener{
             override fun onExerciseClick(exercise: ExercisesItem) {
-
+                val navigation = ExercisesFragmentDirections.actionExercisesFragmentToExercisesDetailFragment(exercise)
+                Navigation.findNavController(requireView()).navigate(navigation)
             }
         })
         binding.exerciseRv.adapter = adapterExercise

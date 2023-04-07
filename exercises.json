@@ -4,95 +4,83 @@
     "name": "Barbell Curl",
     "category": "Biceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/kwG2ipFRgfo/mqdefault.jpg"
+    "videoUrl": "kwG2ipFRgfo"
   },
   {
     "id": 2,
     "name": "Hammer Curl",
     "category": "Biceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/TwD-YGVP4Bk/mqdefault.jpg"
+    "videoUrl": "TwD-YGVP4Bk"
   },
   {
     "id": 3,
     "name": "Incline Curl",
     "category": "Biceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/NHUVgJJ3MBA/mqdefault.jpg"
+    "videoUrl": "NHUVgJJ3MBA"
   },
   {
     "id": 4,
     "name": "Cable Curl",
     "category": "Biceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/-n7wb4WPdic/mqdefault.jpg"
+    "videoUrl": "-n7wb4WPdic"
   },
   {
     "id": 5,
     "name": "Reverse Barbell Curl",
     "category": "Biceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/nRgxYX2Ve9w/mqdefault.jpg"
+    "videoUrl": "nRgxYX2Ve9w"
   },
   {
     "id": 6,
     "name": "Concentration Curl",
     "category": "Biceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/0AUGkch3tzc/mqdefault.jpg"
+    "videoUrl": "0AUGkch3tzc"
   },
   {
     "id": 7,
     "name": "Bench Dips",
     "category": "Triceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/c3ZGl4pAwZ4/mqdefault.jpg"
+    "videoUrl": "c3ZGl4pAwZ4"
   },
   {
     "id": 8,
     "name": "Push Up",
     "category": "Chest",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/o-NC_xXrkDI/mqdefault.jpg"
+    "videoUrl": "o-NC_xXrkDI"
   },
   {
     "id": 9,
     "name": "Dumbbell Kick",
     "category": "Triceps",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/z3sm6YgpJho/mqdefault.jpg"
+    "videoUrl": "z3sm6YgpJho"
   },
   {
     "id": 10,
     "name": "Barbell Bench Press",
     "category": "Chest",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/rT7DgCr-3pg/mqdefault.jpg"
+    "videoUrl": "rT7DgCr-3pg"
   },
   {
     "id": 11,
     "name": "Dumbbell Bench Press",
     "category": "Chest",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/VmB1G1K7v94/mqdefault.jpg"
+    "videoUrl": "VmB1G1K7v94"
   },
   {
     "id": 12,
     "name": "Chest Fly",
     "category": "Chest",
     "description": "...",
-    "videoUrl": "...",
-    "imageUrl": "https://img.youtube.com/vi/eozdVDA78K0/mqdefault.jpg"
+    "videoUrl": "eozdVDA78K0"
   }
 ]
