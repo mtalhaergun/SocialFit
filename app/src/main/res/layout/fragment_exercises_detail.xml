@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".ui.exercises.ExercisesDetailFragment">
 
     <data>
         <variable
@@ -13,7 +15,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.detail.DetailFragment"
         android:background="#252525">
 
         <TextView
@@ -33,26 +34,25 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:id="@+id/youtube_player_view"
+            android:id="@+id/youtubePlayerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            app:autoPlay="true"
-            app:layout_constraintTop_toBottomOf="@+id/titleExercise"
-            app:videoId="@{exercise.videoUrl}" />
+            app:layout_constraintTop_toBottomOf="@+id/titleExercise" />
 
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
-            android:text="@{exercise.description}"
-            android:textColor="#E1CB0A"
-            android:textSize="22sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/youtube_player_view" />
+<!--        <TextView-->
+<!--            android:id="@+id/description"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="32dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="@{exercise.description}"-->
+<!--            android:textColor="#E1CB0A"-->
+<!--            android:textSize="22sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/youtubePlayerView" />-->
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

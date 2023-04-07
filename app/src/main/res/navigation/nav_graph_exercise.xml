@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_exercises"
+    android:id="@+id/nav_graph_exercise"
     app:startDestination="@id/exercisesFragment">
 
     <fragment
@@ -17,9 +17,10 @@
     <fragment
         android:id="@+id/exercisesDetailFragment"
         android:name="com.mte.fitnessapp.ui.exercises.ExercisesDetailFragment"
-        android:label="ExercisesDetailFragment" >
+        android:label="fragment_exercises_detail"
+        tools:layout="@layout/fragment_exercises_detail" >
         <argument
-            android:name="argexercise"
+            android:name="exercisearg"
             app:argType="com.mte.fitnessapp.model.ExercisesItem"
             app:nullable="true"
             android:defaultValue="@null" />
