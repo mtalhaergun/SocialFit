@@ -19,7 +19,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
         app:cardBackgroundColor="#252525"
-        app:strokeWidth="2dp"
+        app:strokeWidth="3dp"
         app:strokeColor="#E1CB0A"
         app:cardCornerRadius="8dp"
         app:cardPreventCornerOverlap="true"
