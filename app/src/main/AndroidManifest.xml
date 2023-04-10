@@ -34,7 +34,7 @@
             android:name=".ui.authentication.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.MainActivity"
+            android:name=".ui.authentication.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.authentication.LoginActivity"
+            android:name=".ui.home.MainActivity"
             android:exported="true">
 
         </activity>
