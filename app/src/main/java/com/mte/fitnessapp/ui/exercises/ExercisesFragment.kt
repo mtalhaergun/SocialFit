@@ -63,6 +63,7 @@ class ExercisesFragment : Fragment() {
 
         viewModel.exercisesResponse.observe(viewLifecycleOwner, Observer {
             exercises = it
+            tempExercises = exercises
             adapterExercise.setExercises(exercises)
         })
 
@@ -121,10 +122,7 @@ class ExercisesFragment : Fragment() {
                             filteredList.add(i)
                         }
                     }
-
-                    if(filteredList.isNotEmpty()){
-                        adapterExercise.setExercises(filteredList)
-                    }
+                    adapterExercise.setExercises(filteredList)
                 }else{
                     binding.categoryRv.visibility = View.VISIBLE
                     adapterExercise.setExercises(tempExercises)
