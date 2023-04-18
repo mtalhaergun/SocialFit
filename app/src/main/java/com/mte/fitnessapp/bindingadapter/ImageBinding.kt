@@ -13,6 +13,5 @@ class ImageBinding {
             val imageUrl = "https://img.youtube.com/vi/${videoId}/maxresdefault.jpg"
             imageView.loadImage(imageUrl)
         }
-
     }
 }

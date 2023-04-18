@@ -1,3 +1,3 @@
-package com.mte.fitnessapp.model
+package com.mte.fitnessapp.model.exercises
 
 class ExercisesResult : ArrayList<ExercisesItem>()

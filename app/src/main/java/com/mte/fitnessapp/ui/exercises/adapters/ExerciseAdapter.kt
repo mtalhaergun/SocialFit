@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mte.fitnessapp.databinding.RecyclerExerciseLayoutBinding
-import com.mte.fitnessapp.model.ExercisesItem
+import com.mte.fitnessapp.model.exercises.ExercisesItem
 import com.mte.fitnessapp.ui.exercises.listeners.ExerciseClickListener
 
 class ExerciseAdapter (private val listener : ExerciseClickListener) : RecyclerView.Adapter<ExerciseAdapter.ExerciseVH>() {

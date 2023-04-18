@@ -1,4 +1,4 @@
-package com.mte.fitnessapp.ui.home.guide
+package com.mte.fitnessapp.ui.home.guide.nutrients
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mte.fitnessapp.R
+import com.mte.fitnessapp.databinding.FragmentNutrientsBinding
 
 class NutrientsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding : FragmentNutrientsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +22,8 @@ class NutrientsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nutrients, container, false)
+        _binding = FragmentNutrientsBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
 }

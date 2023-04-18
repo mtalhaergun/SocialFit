@@ -9,9 +9,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentExercisesBinding
-import com.mte.fitnessapp.model.ExercisesItem
+import com.mte.fitnessapp.model.exercises.ExercisesItem
 import com.mte.fitnessapp.ui.exercises.adapters.CategoryAdapter
 import com.mte.fitnessapp.ui.exercises.adapters.ExerciseAdapter
 import com.mte.fitnessapp.ui.exercises.listeners.CategoryClickListener

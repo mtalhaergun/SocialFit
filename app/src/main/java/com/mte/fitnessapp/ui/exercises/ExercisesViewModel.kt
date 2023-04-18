@@ -3,7 +3,7 @@ package com.mte.fitnessapp.ui.exercises
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mte.fitnessapp.model.ExercisesItem
+import com.mte.fitnessapp.model.exercises.ExercisesItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

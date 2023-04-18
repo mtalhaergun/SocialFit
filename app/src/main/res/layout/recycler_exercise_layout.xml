@@ -6,7 +6,7 @@
     <data>
         <variable
             name="exercise"
-            type="com.mte.fitnessapp.model.ExercisesItem" />
+            type="com.mte.fitnessapp.model.exercises.ExercisesItem" />
         <variable
             name="exerciseClickListener"
             type="com.mte.fitnessapp.ui.exercises.listeners.ExerciseClickListener" />

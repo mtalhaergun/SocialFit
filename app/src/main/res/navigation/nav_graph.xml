@@ -12,10 +12,13 @@
         <action
             android:id="@+id/action_guideFragment_to_nutrientsFragment"
             app:destination="@id/nutrientsFragment" />
+        <action
+            android:id="@+id/action_guideFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/nutrientsFragment"
-        android:name="com.mte.fitnessapp.ui.home.guide.NutrientsFragment"
+        android:name="com.mte.fitnessapp.ui.home.guide.nutrients.NutrientsFragment"
         android:label="fragment_nutrients"
         tools:layout="@layout/fragment_nutrients">
         <action
@@ -42,4 +45,28 @@
         android:name="com.mte.fitnessapp.ui.home.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.mte.fitnessapp.ui.home.guide.questions.QuestionsFragment"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions" >
+        <action
+            android:id="@+id/action_questionsFragment_to_guideFragment"
+            app:destination="@id/guideFragment" />
+        <action
+            android:id="@+id/action_questionsFragment_to_questionsDetailFragment"
+            app:destination="@id/questionsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsDetailFragment"
+        android:name="com.mte.fitnessapp.ui.home.guide.questions.QuestionsDetailFragment"
+        android:label="fragment_questions_detail"
+        tools:layout="@layout/fragment_questions_detail" >
+        <action
+            android:id="@+id/action_questionsDetailFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+        <argument
+            android:name="questionsarg"
+            app:argType="com.mte.fitnessapp.model.questions.QuestionsItem" />
+    </fragment>
 </navigation>

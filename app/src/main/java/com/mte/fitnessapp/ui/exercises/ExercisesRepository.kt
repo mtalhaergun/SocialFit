@@ -1,6 +1,6 @@
 package com.mte.fitnessapp.ui.exercises
 
-import com.mte.fitnessapp.model.ExercisesResult
+import com.mte.fitnessapp.model.exercises.ExercisesResult
 import com.mte.fitnessapp.network.ApiFactory
 import javax.inject.Inject
 

@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_exercises_detail" >
         <argument
             android:name="exercisearg"
-            app:argType="com.mte.fitnessapp.model.ExercisesItem"
+            app:argType="com.mte.fitnessapp.model.exercises.ExercisesItem"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

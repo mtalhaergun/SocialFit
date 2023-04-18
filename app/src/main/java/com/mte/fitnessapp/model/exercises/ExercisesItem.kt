@@ -1,4 +1,4 @@
-package com.mte.fitnessapp.model
+package com.mte.fitnessapp.model.exercises
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

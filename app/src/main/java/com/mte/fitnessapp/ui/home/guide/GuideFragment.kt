@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentGuideBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GuideFragment : Fragment() {
     private var _binding : FragmentGuideBinding? = null
     private val binding get() = _binding!!
@@ -30,6 +32,10 @@ class GuideFragment : Fragment() {
 
         binding.caloriImage.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_guideFragment_to_nutrientsFragment)
+        }
+
+        binding.guideImage.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_guideFragment_to_questionsFragment)
         }
     }
 
