@@ -5,12 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.home.guide.nutrients.NutrientsFragment">
 
+    <data>
+        <variable
+            name="nutrient"
+            type="com.mte.fitnessapp.model.nutrients.NutrientsItem" />
+    </data>
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#252525">
-
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -18,13 +23,760 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
+                android:src="@drawable/burnlogo" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#ECECEC"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="Search Food" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="70dp"
+                android:text="FIND"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/materialCardView"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+            <TextView
+                android:id="@+id/textViewCalorie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{nutrient.name.substring(0,1).toUpperCase + nutrient.name.substring(1) + ` has `+ String.valueOf(nutrient.calories)+ ` calories`}"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#E1CB0A"
+                android:fontFamily="@font/rajdhani_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewWalk"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                app:cardBackgroundColor="#F8ECECEC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewToBurn">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageViewWalking"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/walking"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewWalking"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewWalking"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewWalking"
+                        app:layout_constraintTop_toTopOf="@+id/imageViewWalking" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewWorkout"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:cardBackgroundColor="#F8ECECEC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewWalk">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageViewWorkout"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/workout"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewWorkout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewWorkout"
+                        app:layout_constraintEnd_toStartOf="@+id/imageViewWorkout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageViewWorkout" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewRun"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:cardBackgroundColor="#F8ECECEC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewWorkout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageViewRunning"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/running"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewRunning"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewRunning"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewRunning"
+                        app:layout_constraintTop_toTopOf="@+id/imageViewRunning" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewCycle"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#F8ECECEC"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewRun">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageViewBicycle"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/bicycle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewBicycle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewBicycle"
+                        app:layout_constraintEnd_toStartOf="@+id/imageViewBicycle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageViewBicycle" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#F8ECECEC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCalorie">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewServing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Serving Size per 100 grams"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView3"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="8dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewServing">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewCarbohydrate"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/carbohydrate"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewCarbohydrate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:text="Carbohydrate"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toTopOf="@+id/carbohydrate"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewCarbohydrate"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewCarbohydrate" />
+
+                            <TextView
+                                android:id="@+id/carbohydrate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.carbohydrates_total_g)+'g'}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewCarbohydrate"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewCarbohydrate" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView4"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginTop="8dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintEnd_toStartOf="@+id/materialCardView5"
+                        app:layout_constraintStart_toEndOf="@+id/materialCardView3"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewServing">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewProtein"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/protein"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewProtein"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:text="Protein"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewProtein"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewProtein" />
+
+                            <TextView
+                                android:id="@+id/protein"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.protein_g)+'g'}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewProtein"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewProtein" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView5"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewServing">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewFat"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/fat"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewFat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:text="Fat"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewFat"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewFat" />
+
+                            <TextView
+                                android:id="@+id/fat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.fat_total_g)+'g'}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewFat"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewFat" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView6"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginStart="6dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintBottom_toTopOf="@+id/materialCardView9"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/materialCardView3">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewSugar"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/sugar"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewSugar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:text="Sugar"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toTopOf="@+id/sugar"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewSugar"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewSugar" />
+
+                            <TextView
+                                android:id="@+id/sugar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.sugar_g)+'g'}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewSugar"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewSugar" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView7"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintBottom_toTopOf="@+id/materialCardView10"
+                        app:layout_constraintEnd_toStartOf="@+id/materialCardView8"
+                        app:layout_constraintStart_toEndOf="@+id/materialCardView6"
+                        app:layout_constraintTop_toBottomOf="@+id/materialCardView4">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewSodium"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/sodium"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewSodium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:text="Sodium"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewSodium"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewSodium" />
+
+                            <TextView
+                                android:id="@+id/sodium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.sodium_mg)+`mg`}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewSodium"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewSodium" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView8"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintBottom_toTopOf="@+id/materialCardView11"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/materialCardView5">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewPotassium"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/potassium"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewFatPotassium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:text="Potassium"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewPotassium"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewPotassium" />
+
+                            <TextView
+                                android:id="@+id/potassium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.potassium_mg)+`mg`}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewPotassium"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewPotassium" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView9"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="8dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewSaturatedFat"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/saturatedfat"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewSaturatedFat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:text="Saturated Fat"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewSaturatedFat"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewSaturatedFat" />
+
+                            <TextView
+                                android:id="@+id/saturatedFat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.fat_saturated_g)+'g'}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewSaturatedFat"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewSaturatedFat" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView10"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginBottom="8dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/materialCardView11"
+                        app:layout_constraintStart_toEndOf="@+id/materialCardView9">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewFiberContent"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/fibercontent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewFiberContent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:text="Fiber Content"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewFiberContent"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewFiberContent" />
+
+                            <TextView
+                                android:id="@+id/fiberContent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.fiber_g)+'g'}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewFiberContent"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewFiberContent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView11"
+                        android:layout_width="107dp"
+                        android:layout_height="49dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="8dp"
+                        app:cardBackgroundColor="#FBFBFB"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewCholesterol"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="2dp"
+                                android:src="@drawable/cholesterol"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewCholesterol"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="4dp"
+                                android:text="Cholesterol"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewCholesterol"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewCholesterol" />
+
+                            <TextView
+                                android:id="@+id/cholesterol"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@{String.valueOf(nutrient.cholesterol_mg)+`mg`}"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewCholesterol"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewCholesterol" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textViewToBurn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:text="@{`To burn ` + String.valueOf(nutrient.calories)+ ` calories:`}"
+                android:textSize="14dp"
+                android:textColor="#E1CB0A"
+                android:fontFamily="@font/rajdhani_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
