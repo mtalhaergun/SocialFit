@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >#B8A600</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/rajdhani_bold</item>
     </style>
     
     <style name="roundImageView" parent="">
@@ -21,4 +22,6 @@
         <item name="cornerSizeBottomLeft">20dp</item>
         <item name="cornerSizeBottomRight">20dp</item>
     </style>
+
+
 </resources>

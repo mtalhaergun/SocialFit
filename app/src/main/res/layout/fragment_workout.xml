@@ -52,7 +52,7 @@
                 android:id="@+id/tricepsImage"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/tricepsimage"/>
@@ -60,7 +60,7 @@
                 android:id="@+id/chestImage"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/chestimage"/>
@@ -68,7 +68,7 @@
                 android:id="@+id/backImage"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/backimage"/>
@@ -76,7 +76,7 @@
                 android:id="@+id/absImage"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/absimage"/>
@@ -84,7 +84,7 @@
                 android:id="@+id/shouldersImage"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/shouldersimage"/>
@@ -92,7 +92,7 @@
                 android:id="@+id/legsImage"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/legsimage"

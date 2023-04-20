@@ -9,19 +9,20 @@
         android:layout_height="match_parent"
         android:background="#252525">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/rajdhani_bold"
-            android:text="FREQUENTLY ASKED QUESTIONS"
-            android:textAlignment="center"
-            android:textColor="#E1CB0A"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/rajdhani_bold"
+                android:text="FREQUENTLY ASKED QUESTIONS"
+                android:textAlignment="center"
+                android:textColor="#E1CB0A"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:cardBackgroundColor="#ECECEC"
+            app:cardBackgroundColor="#E1E1E1"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             app:cardUseCompatPadding="true"
@@ -42,7 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 app:iconifiedByDefault="false"
-                app:queryHint="Search" />
+                app:queryHint="Search Question"
+                />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -50,6 +52,7 @@
             android:id="@+id/questionsRv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
