@@ -34,7 +34,14 @@
         android:id="@+id/socialFragment"
         android:name="com.mte.fitnessapp.ui.home.social.SocialFragment"
         android:label="fragment_social"
-        tools:layout="@layout/fragment_social" />
+        tools:layout="@layout/fragment_social" >
+        <action
+            android:id="@+id/action_socialFragment_to_uploadPhotoFragment"
+            app:destination="@id/uploadPhotoFragment" />
+        <action
+            android:id="@+id/action_socialFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/utilityFragment"
         android:name="com.mte.fitnessapp.ui.home.utility.UtilityFragment"
@@ -68,5 +75,21 @@
         <argument
             android:name="questionsarg"
             app:argType="com.mte.fitnessapp.model.questions.QuestionsItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadPhotoFragment"
+        android:name="com.mte.fitnessapp.ui.home.social.UploadPhotoFragment"
+        android:label="fragment_upload_photo"
+        tools:layout="@layout/fragment_upload_photo" >
+        <action
+            android:id="@+id/action_uploadPhotoFragment_to_socialFragment"
+            app:destination="@id/socialFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.mte.fitnessapp.ui.home.social.CommentFragment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" >
+        <argument android:name="postId" />
     </fragment>
 </navigation>
