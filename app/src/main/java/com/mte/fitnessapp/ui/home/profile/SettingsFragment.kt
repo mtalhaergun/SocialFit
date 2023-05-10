@@ -42,7 +42,6 @@ class SettingsFragment : Fragment() {
         userReference?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.editTextEposta.setText(currentuser!!.email).toString()
-
                 binding.editTextAd.setText(snapshot.child("username").value.toString())
             }
 
