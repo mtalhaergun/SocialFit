@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.mte.fitnessapp.R
+import com.mte.fitnessapp.databinding.FragmentUtilityBinding
 
 class UtilityFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding : FragmentUtilityBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +23,21 @@ class UtilityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_utility, container, false)
+        _binding = FragmentUtilityBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.bmi.setOnClickListener {
+            val navigation = UtilityFragmentDirections.actionUtilityFragmentToBmiFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
+        binding.onerep.setOnClickListener {
+            val navigation = UtilityFragmentDirections.actionUtilityFragmentToOnerepmaxFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
+
     }
 
 }

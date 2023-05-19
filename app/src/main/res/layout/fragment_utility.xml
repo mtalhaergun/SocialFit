@@ -31,6 +31,7 @@
             android:layout_marginTop="100dp">
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/bmi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
@@ -40,6 +41,7 @@
                 app:shapeAppearanceOverlay="@style/roundImageView" />
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/calorie"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
@@ -54,6 +56,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/bodyfat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
@@ -63,6 +66,7 @@
                 app:shapeAppearanceOverlay="@style/roundImageView" />
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/onerep"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
