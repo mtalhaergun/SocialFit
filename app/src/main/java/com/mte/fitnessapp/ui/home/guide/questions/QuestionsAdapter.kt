@@ -6,9 +6,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.mte.fitnessapp.databinding.FragmentQuestionsBinding
 import com.mte.fitnessapp.databinding.RecyclerQuestionsLayoutBinding
+import com.mte.fitnessapp.model.exercises.ExercisesItem
 import com.mte.fitnessapp.model.questions.QuestionsItem
 
-class QuestionsAdapter(private val listQuestions : List<QuestionsItem>) : RecyclerView.Adapter<QuestionsAdapter.QuestionsVH>() {
+class QuestionsAdapter(private var listQuestions : List<QuestionsItem>) : RecyclerView.Adapter<QuestionsAdapter.QuestionsVH>() {
 
     class QuestionsVH(private val binding : RecyclerQuestionsLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(question : QuestionsItem){
@@ -35,5 +36,10 @@ class QuestionsAdapter(private val listQuestions : List<QuestionsItem>) : Recycl
 
     override fun getItemCount(): Int {
         return listQuestions.size
+    }
+
+    fun setQuestions(list : List<QuestionsItem>){
+        listQuestions = list
+        notifyDataSetChanged()
     }
 }

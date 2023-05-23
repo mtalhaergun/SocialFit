@@ -67,7 +67,7 @@
                     android:text="14"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="100sp" />
+                    android:textSize="90sp" />
 
                 <TextView
                     android:id="@+id/reptext"

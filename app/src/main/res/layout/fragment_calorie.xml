@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.utility.BmiFragment"
+    tools:context=".ui.home.utility.CalorieFragment"
     android:background="#252525">
 
     <ScrollView
@@ -27,7 +27,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="BMI CALCULATOR"
+                android:text="CALORIE CALCULATOR"
                 android:textAlignment="center"
                 android:textColor="#E1CB0A"
                 android:textSize="30sp"
@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:id="@+id/linearLayoutBmi"
+                android:id="@+id/linearLayoutCalorie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -45,19 +45,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/title">
 
                 <TextView
-                    android:id="@+id/bmi"
+                    android:id="@+id/calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22.9"
+                    android:text="2200"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="90sp" />
 
                 <TextView
-                    android:id="@+id/bmitext"
+                    android:id="@+id/calorietext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="kg/m2"
+                    android:text="kcal"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
@@ -65,16 +65,16 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/bmitext2"
+                android:id="@+id/calorietext2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(Normal)"
+                android:text="to maintain weight"
                 android:textAlignment="center"
-                android:textColor="#FF3FFA47"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayoutBmi"
-                app:layout_constraintStart_toStartOf="@+id/linearLayoutBmi"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutBmi" />
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayoutCalorie"
+                app:layout_constraintStart_toStartOf="@+id/linearLayoutCalorie"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalorie" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/maleCard"
@@ -87,7 +87,7 @@
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bmitext2">
+                app:layout_constraintTop_toBottomOf="@+id/calorietext2">
 
                 <CheckBox
                     android:id="@+id/checkBoxMale"
@@ -109,7 +109,7 @@
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bmitext2">
+                app:layout_constraintTop_toBottomOf="@+id/calorietext2">
 
                 <CheckBox
                     android:id="@+id/checkBoxFemale"
@@ -139,9 +139,9 @@
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutBmi"
-                    app:layout_constraintStart_toStartOf="@+id/linearLayoutBmi"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutBmi" />
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutCalorie"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayoutCalorie"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalorie" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/editTextAgeCard"
@@ -292,7 +292,63 @@
                 android:text="Calculate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutWeight" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutActivity" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutWeight">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/activityText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Activity"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/activityCard"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardBackgroundColor="#2E2E2E"
+                        app:layout_constraintBottom_toBottomOf="parent"
+
+                        app:layout_constraintStart_toEndOf="@+id/activityText"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#E1CB0A"
+                            android:popupBackground="#2E2E2E"/>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

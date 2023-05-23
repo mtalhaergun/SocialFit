@@ -1,5 +1,7 @@
 package com.mte.fitnessapp.ui.home.guide.nutrients
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,10 +20,17 @@ class NutrientsFragment : Fragment() {
     private var _binding : FragmentNutrientsBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<NutrientsViewModel>()
+    private lateinit var nutrient : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getNutrients("kebab")
+
+        nutrient = context?.getSharedPreferences("Nutrient", Context.MODE_PRIVATE)!!
+        if(nutrient.getString("nutrient",null) == null){
+            viewModel.getNutrients("kebab")
+        }else{
+            viewModel.getNutrients(nutrient.getString("nutrient","")!!)
+        }
     }
 
     override fun onCreateView(
@@ -43,6 +52,7 @@ class NutrientsFragment : Fragment() {
         viewModel.nutrientsResponse.observe(viewLifecycleOwner, Observer {
             if(it.size == 1){
                 binding.nutrient = it[0]
+                nutrient.edit().putString("nutrient", it[0].name).apply()
                 val walkCalorie = (it[0].calories * 0.24).toInt()
                 val workoutCalorie = (it[0].calories * 0.19).toInt()
                 val runningCalorie = (it[0].calories * 0.14).toInt()
@@ -57,6 +67,11 @@ class NutrientsFragment : Fragment() {
                 Toast.makeText(context,"Please search for a valid nutrient name",Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

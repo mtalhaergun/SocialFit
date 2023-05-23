@@ -37,6 +37,14 @@ class UtilityFragment : Fragment() {
             val navigation = UtilityFragmentDirections.actionUtilityFragmentToOnerepmaxFragment()
             Navigation.findNavController(it).navigate(navigation)
         }
+        binding.calorie.setOnClickListener {
+            val navigation = UtilityFragmentDirections.actionUtilityFragmentToCalorieFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
+        binding.bodyfat.setOnClickListener {
+            val navigation = UtilityFragmentDirections.actionUtilityFragmentToBodyFatFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
 
     }
 

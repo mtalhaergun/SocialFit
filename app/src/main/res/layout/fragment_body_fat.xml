@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.utility.BmiFragment"
+    tools:context=".ui.home.utility.BodyFatFragment"
     android:background="#252525">
 
     <ScrollView
@@ -27,7 +27,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="BMI CALCULATOR"
+                android:text="BODY FAT CALCULATOR"
                 android:textAlignment="center"
                 android:textColor="#E1CB0A"
                 android:textSize="30sp"
@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:id="@+id/linearLayoutBmi"
+                android:id="@+id/linearLayoutFat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -45,19 +45,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/title">
 
                 <TextView
-                    android:id="@+id/bmi"
+                    android:id="@+id/fat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22.9"
+                    android:text="14"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="90sp" />
 
                 <TextView
-                    android:id="@+id/bmitext"
+                    android:id="@+id/fattext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="kg/m2"
+                    android:text="%"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
@@ -65,16 +65,16 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/bmitext2"
+                android:id="@+id/fattext2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(Normal)"
+                android:text="(Average)"
                 android:textAlignment="center"
-                android:textColor="#FF3FFA47"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayoutBmi"
-                app:layout_constraintStart_toStartOf="@+id/linearLayoutBmi"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutBmi" />
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayoutFat"
+                app:layout_constraintStart_toStartOf="@+id/linearLayoutFat"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutFat" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/maleCard"
@@ -87,7 +87,7 @@
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bmitext2">
+                app:layout_constraintTop_toBottomOf="@+id/fattext2">
 
                 <CheckBox
                     android:id="@+id/checkBoxMale"
@@ -109,7 +109,7 @@
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bmitext2">
+                app:layout_constraintTop_toBottomOf="@+id/fattext2">
 
                 <CheckBox
                     android:id="@+id/checkBoxFemale"
@@ -139,9 +139,9 @@
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutBmi"
-                    app:layout_constraintStart_toStartOf="@+id/linearLayoutBmi"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutBmi" />
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutFat"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayoutFat"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutFat" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/editTextAgeCard"
@@ -284,6 +284,144 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayoutNeck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutWeight">
+
+                <TextView
+                    android:id="@+id/necktext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Neck:"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutFat"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayoutFat"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutFat" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/editTextNeckCard"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#2E2E2E"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <EditText
+                        android:id="@+id/editTextNeck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutHip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayoutWeight"
+                app:layout_constraintStart_toStartOf="@+id/linearLayoutWeight"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutWeight">
+
+                <TextView
+                    android:id="@+id/hiptext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Hip:"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutFat"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayoutFat"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutFat" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/editTextHipCard"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#2E2E2E"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <EditText
+                        android:id="@+id/editTextHip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutWaist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutWeight">
+
+                <TextView
+                    android:id="@+id/waisttext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Waist:"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayoutFat"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayoutFat"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutFat" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/editTextWaistCard"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#2E2E2E"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <EditText
+                        android:id="@+id/editTextWaist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/buttonCalculate"
                 android:layout_width="wrap_content"
@@ -292,7 +430,8 @@
                 android:text="Calculate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutWeight" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutNeck" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
