@@ -2,6 +2,7 @@ package com.mte.fitnessapp.ui.home.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.mte.fitnessapp.databinding.RecyclerPhotoLayoutBinding
@@ -20,7 +21,10 @@ class PhotosRecyclerAdapter(private var listPhotos : List<String>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: PhotoVH, position: Int) {
-
+        holder.itemView.setOnClickListener {
+            val navigation = ProfileFragmentDirections.actionProfileFragmentToPhotoDetailFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
     }
 
     override fun getItemCount(): Int {

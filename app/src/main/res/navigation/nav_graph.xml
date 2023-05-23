@@ -64,7 +64,11 @@
         android:id="@+id/profileFragment"
         android:name="com.mte.fitnessapp.ui.home.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/questionsFragment"
         android:name="com.mte.fitnessapp.ui.home.guide.questions.QuestionsFragment"
@@ -140,5 +144,14 @@
         <action
             android:id="@+id/action_bodyFatFragment_to_utilityFragment"
             app:destination="@id/utilityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailFragment"
+        android:name="com.mte.fitnessapp.ui.home.profile.PhotoDetailFragment"
+        android:label="fragment_photo_detail"
+        tools:layout="@layout/fragment_photo_detail" >
+        <action
+            android:id="@+id/action_photoDetailFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>
