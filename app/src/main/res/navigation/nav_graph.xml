@@ -108,6 +108,9 @@
         android:label="fragment_comment"
         tools:layout="@layout/fragment_comment" >
         <argument android:name="postId" />
+        <action
+            android:id="@+id/action_commentFragment_self"
+            app:destination="@id/commentFragment" />
     </fragment>
     <fragment
         android:id="@+id/bmiFragment"
@@ -153,5 +156,8 @@
         <action
             android:id="@+id/action_photoDetailFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <argument
+            android:name="post"
+            app:argType="com.mte.fitnessapp.model.post.Post" />
     </fragment>
 </navigation>

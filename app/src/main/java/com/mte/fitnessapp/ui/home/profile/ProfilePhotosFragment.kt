@@ -1,25 +1,34 @@
 package com.mte.fitnessapp.ui.home.profile
 
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.getField
+import com.google.firebase.ktx.Firebase
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentProfilePhotosBinding
+import com.mte.fitnessapp.model.post.Post
 
 class ProfilePhotosFragment : Fragment() {
 
     private var _binding : FragmentProfilePhotosBinding? = null
     private val binding get() = _binding!!
+    val db= Firebase.firestore
+    private lateinit var auth: FirebaseAuth
     private lateinit var adapterPhotos : PhotosRecyclerAdapter
-    var list = arrayListOf<String>()
+    var list = ArrayList<Post>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -32,27 +41,16 @@ class ProfilePhotosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
+        db.collection("posts").document(auth.uid!!).collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .addSnapshotListener { value2, error1 ->
+
+                if (value2 != null) {
+                    value2.documents.forEach {
+                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}"))
+                        adapterPhotos.notifyDataSetChanged()
+                    }
+                }
+            }
 
         adapterPhotos = PhotosRecyclerAdapter(list)
         binding.commentsRv.adapter = adapterPhotos

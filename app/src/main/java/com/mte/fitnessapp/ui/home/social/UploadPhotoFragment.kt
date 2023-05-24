@@ -106,7 +106,7 @@ class UploadPhotoFragment : Fragment() {
                                     "caption" to binding.commentEditTextText.text.toString()
 
                                 )
-
+                                db.collection("photos").document(uuid.toString()).set(post)
                                 db.collection("posts")
                                     .document(auth.uid!!).set(field).addOnCompleteListener {
                                         db.collection("posts")

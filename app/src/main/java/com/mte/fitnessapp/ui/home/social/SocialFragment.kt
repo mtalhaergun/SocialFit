@@ -75,17 +75,10 @@ class SocialFragment : Fragment() {
 
             findNavController().navigate(R.id.action_socialFragment_to_uploadPhotoFragment)
         }
-        db.collection("posts").addSnapshotListener { value, error ->
 
-            if (error != null) {
-                Toast.makeText(requireContext(), error.localizedMessage, Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                if (value != null) {
-                    val documents = value.documents
-                    value.documents.forEach {
                         Log.e("ccc","aaa")
-                        db.collection("posts").document(it.id).collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
+
+                        db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
                             .addSnapshotListener { value2, error1 ->
 
                                 if (value2 != null) {
@@ -96,11 +89,6 @@ class SocialFragment : Fragment() {
                                     }
                                 }
                             }
-                    }
-                }
-
-            }
-        }
 
         binding.rVPost.layoutManager= LinearLayoutManager(requireContext())
         binding.rVPost.setHasFixedSize(true)

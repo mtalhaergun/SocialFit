@@ -90,6 +90,8 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
                         userName = (snapshot.child("username").value.toString())
 
                         val comment = hashMapOf(
+                            "userId" to currentuser?.uid!!,
+                            "postId" to myDataList[position].id,
                             "userName" to userName,
                             "comment" to text.text.toString(),
                             "commentDate" to Timestamp.now()

@@ -9,16 +9,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.ktx.Firebase
-import com.mte.fitnessapp.R
 import com.mte.fitnessapp.adapter.CommentAdapter
 import com.mte.fitnessapp.databinding.FragmentCommentBinding
 import com.mte.fitnessapp.model.post.Comment
 
 
 class CommentFragment : Fragment() {
+    var control:Boolean=false
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var binding: FragmentCommentBinding
     val db= Firebase.firestore
@@ -27,7 +29,7 @@ class CommentFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -43,8 +45,8 @@ class CommentFragment : Fragment() {
         val args: CommentFragmentArgs by navArgs()
         val data = args.postId
         Log.e("pppp",data)
+        comment.clear()
         db.collection("posts").addSnapshotListener { value, error ->
-
             if (error != null) {
                 Toast.makeText(requireContext(), error.localizedMessage, Toast.LENGTH_SHORT)
                     .show()
@@ -61,16 +63,16 @@ class CommentFragment : Fragment() {
                                             .document(it.id).collection("comment").orderBy("commentDate",com.google.firebase.firestore.Query.Direction.ASCENDING).addSnapshotListener { value3, error3 ->
                                             if (value3!=null){
                                                 value3.documents.forEach{
-                                                    comment.add(Comment("${it.getField<String>("comment")}","${it.getField<String>("userName")}"))
+                                                    control = document.id==auth.uid
+                                                    Log.e("control",control.toString())
+                                                    comment.add(Comment(it.id,"${it.getField<String>("userId")}","${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",control))
                                                     recyclerViewAdapter.notifyDataSetChanged()
-
                                                 }
                                             }
-
-
                                         }
                                     }
                                 }
+
                             }
                         }
                     }
