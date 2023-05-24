@@ -50,8 +50,8 @@ class CommentAdapter(var myDataList: ArrayList<Comment>) : RecyclerView.Adapter<
         textView.text=myDataList[position].userName
         textView2.text=myDataList[position].comment
         button.isVisible = myDataList[position].control==true
-        button.setOnClickListener {
 
+        button.setOnClickListener {
             var comment=ArrayList<Comment>()
 
             db.collection("posts").document(myDataList[position].userId)

@@ -83,9 +83,9 @@ class SocialFragment : Fragment() {
 
                                 if (value2 != null) {
                                     value2.documents.forEach {
-                                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}"))
+                                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
                                         recyclerViewAdapter.notifyDataSetChanged()
-                                        Log.e("liste:",list[0].imageUrl)
+
                                     }
                                 }
                             }

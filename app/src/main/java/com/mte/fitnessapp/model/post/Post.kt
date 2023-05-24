@@ -6,4 +6,5 @@ data class Post(val id:String,
                 val userName:String,
                 val imageUrl:String,
                 val caption:String,
+                val userId:String,
 ):Serializable

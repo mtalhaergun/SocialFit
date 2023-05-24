@@ -159,5 +159,8 @@
         <argument
             android:name="post"
             app:argType="com.mte.fitnessapp.model.post.Post" />
+        <action
+            android:id="@+id/action_photoDetailFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
     </fragment>
 </navigation>
