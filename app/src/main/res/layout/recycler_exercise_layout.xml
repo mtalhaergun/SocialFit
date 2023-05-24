@@ -15,15 +15,11 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
         app:cardBackgroundColor="#252525"
         app:strokeWidth="3dp"
         app:strokeColor="#E1CB0A"
         app:cardCornerRadius="8dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
+
         android:onClick="@{() -> exerciseClickListener.onExerciseClick(exercise)}">
 
         <RelativeLayout
@@ -32,8 +28,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/exerciseImageCard"
-                android:layout_width="190dp"
-                android:layout_height="170dp">
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
 
                 <ImageView
                     android:id="@+id/exerciseImage"
@@ -46,7 +42,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/exerciseNameCard"
-                android:layout_width="190dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:cardBackgroundColor="#E1CB0A"
                 app:cardCornerRadius="8dp"

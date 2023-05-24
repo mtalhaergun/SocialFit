@@ -1,5 +1,6 @@
 package com.mte.fitnessapp.ui.exercises
 
+import android.graphics.Rect
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
+import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentExercisesBinding
 import com.mte.fitnessapp.model.exercises.ExercisesItem
 import com.mte.fitnessapp.ui.exercises.adapters.CategoryAdapter
@@ -55,6 +58,9 @@ class ExercisesFragment : Fragment() {
             binding.exerciseRv.adapter = adapterExercise
         }
         listeners()
+
+        val spacing = resources.getDimensionPixelSize(R.dimen.exercise_spacing)
+        binding.exerciseRv.addItemDecoration(GridSpacingItemDecoration(2, spacing))
 
     }
 
@@ -140,5 +146,19 @@ class ExercisesFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    inner class GridSpacingItemDecoration(private val spanCount: Int, private val spacing: Int) : RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+            val position = parent.getChildAdapterPosition(view)
+            val column = position % spanCount
+
+            outRect.left = spacing - column * spacing / spanCount
+            outRect.right = (column + 1) * spacing / spanCount
+
+            if (position >= spanCount) {
+                outRect.top = spacing
+            }
+        }
     }
 }
