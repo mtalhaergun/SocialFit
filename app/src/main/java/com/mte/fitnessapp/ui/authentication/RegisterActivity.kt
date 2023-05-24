@@ -55,6 +55,7 @@ class RegisterActivity : AppCompatActivity() {
                         currentUserDb?.child("username")?.setValue(uyeadsoyad)
                         currentUserDb?.child("email")?.setValue(uyemail)
                         currentUserDb?.child("sifre")?.setValue(uyesifre)
+                        currentUserDb?.child("profilPhoto")?.setValue("null")
                         Toast.makeText(this,"Kayıt Başarılı",Toast.LENGTH_SHORT).show()
                         auth.currentUser?.sendEmailVerification()?.addOnSuccessListener {
 

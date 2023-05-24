@@ -44,6 +44,7 @@ class UploadPhotoFragment : Fragment() {
         super.onCreate(savedInstanceState)
         database= FirebaseDatabase.getInstance()
         databaseReference=database?.reference!!.child("profile")
+        auth = FirebaseAuth.getInstance()
 
     }
 
@@ -51,7 +52,7 @@ class UploadPhotoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        auth = FirebaseAuth.getInstance()
+
         _binding=FragmentUploadPhotoBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -100,13 +101,14 @@ class UploadPhotoFragment : Fragment() {
                                 )
 
                                 val post = hashMapOf(
+                                    "id" to auth.currentUser!!.uid,
                                     "userName" to userName,
                                     "imageUrl" to downloadPhoto,
                                     "uploadDate" to Timestamp.now(),
                                     "caption" to binding.commentEditTextText.text.toString()
 
                                 )
-
+                                db.collection("photos").document(uuid.toString()).set(post)
                                 db.collection("posts")
                                     .document(auth.uid!!).set(field).addOnCompleteListener {
                                         db.collection("posts")

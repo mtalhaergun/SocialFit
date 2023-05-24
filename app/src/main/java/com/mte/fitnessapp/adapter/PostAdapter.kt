@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -25,7 +24,6 @@ import com.mte.fitnessapp.databinding.PostRecyclerRowBinding
 import com.mte.fitnessapp.model.post.Post
 import com.mte.fitnessapp.ui.home.social.SocialFragmentDirections
 import com.squareup.picasso.Picasso
-import okhttp3.internal.notify
 
 
 class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.DataVH>() {
@@ -55,14 +53,18 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
     override fun onBindViewHolder(holder: DataVH, position: Int) {
         var temp=position
         var currentuser = auth.currentUser
-        var userReference = databaseReference?.child(currentuser?.uid!!)
+        var userReference = databaseReference?.child(myDataList[position].userId)
+        var profilPhoto=""
+        Log.e("id:",myDataList[position].userId)
         var userName = ""
+
 
         val textView = holder.itemView.findViewById<TextView>(R.id.publisher_user_name_post)
         val textViewName = holder.itemView.findViewById<TextView>(R.id.publisher)
         val textViewCaption = holder.itemView.findViewById<TextView>(R.id.post_caption)
-        val textViewComment = holder.itemView.findViewById<TextView>(R.id.Viewcomments)
+        val textViewComment = holder.itemView.findViewById<TextView>(R.id.viewComments)
         val image= holder.itemView.findViewById<ImageView>(R.id.post_image)
+        val profilImage=holder.itemView.findViewById<ImageView>(R.id.publisher_profile_image_post)
         val commentButton=holder.itemView.findViewById<ImageView>(R.id.post_image_comment_btn)
         textView.text=myDataList[position].userName
         textViewName.text=myDataList[position].userName
@@ -70,6 +72,20 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
         Log.e("asdddd",myDataList.size.toString())
         Picasso.get().load(myDataList[position].imageUrl).into(image)
 
+        userReference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                profilPhoto = (snapshot.child("profilPhoto").value.toString())
+                if (profilPhoto!="null"){
+                    Log.e("id:",profilPhoto)
+                    Picasso.get().load(profilPhoto).into(profilImage)
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
         textViewComment.setOnClickListener {
             val action=SocialFragmentDirections.actionSocialFragmentToCommentFragment(myDataList[position].id)
             holder.itemView.findNavController().navigate(action)
@@ -89,7 +105,10 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
 
                         userName = (snapshot.child("username").value.toString())
 
+
                         val comment = hashMapOf(
+                            "userId" to currentuser?.uid!!,
+                            "postId" to myDataList[position].id,
                             "userName" to userName,
                             "comment" to text.text.toString(),
                             "commentDate" to Timestamp.now()
