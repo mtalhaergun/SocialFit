@@ -1,12 +1,11 @@
 package com.mte.fitnessapp.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
@@ -22,7 +21,7 @@ import com.mte.fitnessapp.databinding.CommentRowBinding
 import com.mte.fitnessapp.model.post.Comment
 import kotlinx.coroutines.delay
 
-class CommentAdapter(var myDataList: ArrayList<Comment>) : RecyclerView.Adapter<CommentAdapter.DataVH>() {
+class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context) : RecyclerView.Adapter<CommentAdapter.DataVH>() {
     val db= Firebase.firestore
     val auth= FirebaseAuth.getInstance()
     var control:Boolean=false
@@ -46,41 +45,54 @@ class CommentAdapter(var myDataList: ArrayList<Comment>) : RecyclerView.Adapter<
         var currentUser=auth.currentUser
         val textView = holder.itemView.findViewById<TextView>(R.id.userNameTitle1)
         val textView2= holder.itemView.findViewById<TextView>(R.id.commentTitle1)
-        val button= holder.itemView.findViewById<Button>(R.id.delete_comment)
+        val deleteButton= holder.itemView.findViewById<ImageView>(R.id.delete_comment)
         textView.text=myDataList[position].userName
         textView2.text=myDataList[position].comment
-        button.isVisible = myDataList[position].control==true
+        deleteButton.isVisible = myDataList[position].control==true
 
-        button.setOnClickListener {
-            var comment=ArrayList<Comment>()
+        deleteButton.setOnClickListener {
+            val popUpMenu = PopupMenu(mContext,it)
+            popUpMenu.inflate(R.menu.photo_menu)
 
-            db.collection("posts").document(myDataList[position].userId)
-                .collection("photos").document(myDataList[position].postId)
-                .collection("comment").document(myDataList[position].commentId).delete()
-                .addOnSuccessListener {
-                    db.collection("posts").document(myDataList[position].userId)
-                        .collection("photos").document(myDataList[position].postId)
-                        .collection("comment").addSnapshotListener { value, error ->
-                            if(value==null){}
-                            value?.documents!!.forEach {
-                                comment.add(Comment(it.id,"${it.getField<String>("userId")}","${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",true))
+            popUpMenu.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.deleteMenu -> {
+                        var comment=ArrayList<Comment>()
+
+                        db.collection("posts").document(myDataList[position].userId)
+                            .collection("photos").document(myDataList[position].postId)
+                            .collection("comment").document(myDataList[position].commentId).delete()
+                            .addOnSuccessListener {
+                                db.collection("posts").document(myDataList[position].userId)
+                                    .collection("photos").document(myDataList[position].postId)
+                                    .collection("comment").addSnapshotListener { value, error ->
+                                        if(value==null){}
+                                        value?.documents!!.forEach {
+                                            comment.add(Comment(it.id,"${it.getField<String>("userId")}","${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",true))
+                                        }
+
+                                        myDataList.clear()
+                                        notifyDataSetChanged()
+                                        myDataList.addAll(comment)
+                                        notifyDataSetChanged()
+
+                                    }
+
+
+
+
                             }
-
-                            myDataList.clear()
-                            notifyDataSetChanged()
-                            myDataList.addAll(comment)
-                            notifyDataSetChanged()
-
-                        }
-
-
-
-
+                            .addOnFailureListener { e ->
+                                // Silme işlemi başarısız olduğunda yapılacak işlemler
+                                println("Belge silme hatası: $e")
+                            }
+                        true
+                    }
+                    else -> false
                 }
-                .addOnFailureListener { e ->
-                    // Silme işlemi başarısız olduğunda yapılacak işlemler
-                    println("Belge silme hatası: $e")
-                }
+            }
+            popUpMenu.show()
+
 
         }
     }

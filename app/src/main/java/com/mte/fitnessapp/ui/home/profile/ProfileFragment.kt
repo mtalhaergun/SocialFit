@@ -1,5 +1,6 @@
 package com.mte.fitnessapp.ui.home.profile
 
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -18,10 +22,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentProfileBinding
+import com.mte.fitnessapp.model.post.Post
 import com.squareup.picasso.Picasso
 import java.util.UUID
 
@@ -34,6 +40,8 @@ class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     var databaseReference: DatabaseReference?=null
     var database: FirebaseDatabase?=null
+    private lateinit var adapterPhotos : PhotosRecyclerAdapter
+    var list = ArrayList<Post>()
 
 
     lateinit var imageUri: Uri
@@ -72,7 +80,7 @@ class ProfileFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadFragment(ProfilePhotosFragment())
+
         val resim = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             if (uri != null) {
                 imageUri = Uri.parse(uri.toString())
@@ -101,30 +109,42 @@ class ProfileFragment : Fragment() {
 
         }
 
-        binding.profileBarNavigation.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.photospage -> {
-                    loadFragment(ProfilePhotosFragment())
-                    true
-                }
-                R.id.settingspage -> {
-                    loadFragment(SettingsFragment())
-                    true
-                }
-                else -> {
-                    false
-                }
-            }
+        binding.settingsImage.setOnClickListener {
+            val navigation = ProfileFragmentDirections.actionProfileFragmentToSettingsFragment()
+            findNavController().navigate(navigation)
         }
 
+        db.collection("posts").document(auth.uid!!).collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .addSnapshotListener { value2, error1 ->
+
+                if (value2 != null) {
+                    value2.documents.forEach {
+                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}",auth.uid!!))
+                        adapterPhotos.notifyDataSetChanged()
+                    }
+                }
+            }
+
+        adapterPhotos = PhotosRecyclerAdapter(list)
+        binding.photoRv.adapter = adapterPhotos
+
+        val spacing = resources.getDimensionPixelSize(R.dimen.grid_spacing)
+        binding.photoRv.addItemDecoration(GridSpacingItemDecoration(3, spacing))
+
     }
 
-    private  fun loadFragment(fragment: Fragment){
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.profileContainer,fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+    inner class GridSpacingItemDecoration(private val spanCount: Int, private val spacing: Int) : RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+            val position = parent.getChildAdapterPosition(view)
+            val column = position % spanCount
 
+            outRect.left = spacing - column * spacing / spanCount
+            outRect.right = (column + 1) * spacing / spanCount
+
+            if (position >= spanCount) {
+                outRect.top = spacing
+            }
+        }
+    }
 
 }

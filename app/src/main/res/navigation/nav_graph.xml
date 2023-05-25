@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_profileFragment_to_photoDetailFragment"
             app:destination="@id/photoDetailFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
@@ -162,5 +165,14 @@
         <action
             android:id="@+id/action_photoDetailFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mte.fitnessapp.ui.home.profile.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

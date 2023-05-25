@@ -83,7 +83,7 @@ class CommentFragment : Fragment() {
         }
         binding.rVComment.layoutManager= LinearLayoutManager(requireContext())
         binding.rVComment.setHasFixedSize(true)
-        recyclerViewAdapter= CommentAdapter(comment)
+        recyclerViewAdapter= CommentAdapter(comment,requireContext())
         binding.rVComment.adapter=recyclerViewAdapter
     }
     
