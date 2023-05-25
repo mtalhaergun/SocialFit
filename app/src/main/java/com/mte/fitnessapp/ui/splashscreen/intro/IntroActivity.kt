@@ -19,7 +19,12 @@ class IntroActivity : AppCompatActivity() {
             supportActionBar!!.hide()
         }
 
-        binding.viewpager.adapter = ViewPagerAdapter(supportFragmentManager)
+        val adapter = ViewPagerAdapter(this)
+        adapter.addFragment(Intro1Fragment())
+        adapter.addFragment(Intro2Fragment())
+        adapter.addFragment(Intro3Fragment())
+        binding.viewpager.adapter = adapter
+        binding.indicator.setViewPager2(binding.viewpager)
 
         binding.getStartedBtn.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)

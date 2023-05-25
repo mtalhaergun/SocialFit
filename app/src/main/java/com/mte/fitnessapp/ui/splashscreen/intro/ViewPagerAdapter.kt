@@ -1,22 +1,24 @@
 package com.mte.fitnessapp.ui.splashscreen.intro
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
-    private val fragments = listOf(
-        Intro1Fragment(),
-        Intro2Fragment(),
-        Intro3Fragment()
-    )
+    private val fragments = mutableListOf<Fragment>()
 
-    override fun getCount(): Int {
+    fun addFragment(fragment: Fragment) {
+        fragments.add(fragment)
+    }
+
+    override fun getItemCount(): Int {
         return fragments.size
     }
 
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         return fragments[position]
     }
 }

@@ -19,34 +19,42 @@
 
         <activity
             android:name=".ui.exercises.ExercisesActivity"
+            android:screenOrientation="portrait"
             android:exported="true"></activity>
         <activity
             android:name=".ui.authentication.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.splashscreen.intro.IntroActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".ui.authentication.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.home.MainActivity"
-            android:exported="true">
-
-
-        </activity>
-        <activity
-            android:name=".ui.authentication.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.authentication.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+
+
+        </activity>
+        <activity
+            android:name=".ui.authentication.LoginActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+
         </activity>
 
         <meta-data
