@@ -33,11 +33,7 @@
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.authentication.RegisterActivity"
@@ -54,7 +50,11 @@
             android:name=".ui.authentication.LoginActivity"
             android:screenOrientation="portrait"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
