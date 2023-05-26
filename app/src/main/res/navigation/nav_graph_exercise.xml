@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_exercisesFragment_to_exercisesDetailFragment"
             app:destination="@id/exercisesDetailFragment" />
+        <action
+            android:id="@+id/action_exercisesFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/exercisesDetailFragment"
@@ -24,5 +27,14 @@
             app:argType="com.mte.fitnessapp.model.exercises.ExercisesItem"
             app:nullable="true"
             android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.mte.fitnessapp.ui.exercises.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_exercisesFragment"
+            app:destination="@id/exercisesFragment" />
     </fragment>
 </navigation>

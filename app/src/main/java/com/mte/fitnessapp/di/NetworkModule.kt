@@ -1,10 +1,16 @@
 package com.mte.fitnessapp.di
 
+import android.content.Context
+import androidx.room.Room
 import com.mte.fitnessapp.network.ApiFactory
+import com.mte.fitnessapp.room.DatabaseFavorites
+import com.mte.fitnessapp.room.FavoritesDao
+import com.mte.fitnessapp.ui.exercises.favorites.FavoritesRepository
 import com.mte.fitnessapp.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -39,5 +45,19 @@ object NetworkModule {
     @Provides
     fun provideApiFactory(retrofit: Retrofit): ApiFactory{
         return retrofit.create(ApiFactory::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoritesDaoRepository(fdao : FavoritesDao) : FavoritesRepository {
+        return FavoritesRepository(fdao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoritesDao(@ApplicationContext context: Context) : FavoritesDao {
+        val vt = Room.databaseBuilder(context, DatabaseFavorites::class.java,"favExercises.sqlite")
+            .build()
+        return vt.getFavoritesDao()
     }
 }

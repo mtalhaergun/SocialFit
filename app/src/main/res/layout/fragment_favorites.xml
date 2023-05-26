@@ -6,48 +6,30 @@
     android:layout_height="match_parent"
     android:background="#252525"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.exercises.ExercisesFragment">
+    tools:context=".ui.exercises.favorites.FavoritesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginTop="4dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#ECECEC">
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                android:layout_marginTop="4dp"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="#ECECEC"
-                android:layout_weight="1">
+                android:layout_height="40dp"
+                app:iconifiedByDefault="false"
+                app:queryHint="Search" />
 
-                <androidx.appcompat.widget.SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    app:iconifiedByDefault="false"
-                    app:queryHint="Search" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <ImageView
-                android:id="@+id/favoritesButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="6dp"
-                android:src="@drawable/favorite_heart"
-                android:layout_marginEnd="2dp"
-                android:translationZ="90dp"
-                />
-
-        </LinearLayout>
-
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categoryRv"
