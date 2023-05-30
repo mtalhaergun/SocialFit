@@ -53,10 +53,9 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
     override fun onBindViewHolder(holder: DataVH, position: Int) {
         var temp=position
         var currentuser = auth.currentUser
-        var userReference = databaseReference?.child(myDataList[position].userId)
+        var userReference = databaseReference?.child(myDataList[temp].userId)
         var profilPhoto=""
-        Log.e("id:",myDataList[position].userId)
-        var userName = ""
+
 
 
         val textView = holder.itemView.findViewById<TextView>(R.id.publisher_user_name_post)
@@ -66,11 +65,11 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
         val image= holder.itemView.findViewById<ImageView>(R.id.post_image)
         val profilImage=holder.itemView.findViewById<ImageView>(R.id.publisher_profile_image_post)
         val commentButton=holder.itemView.findViewById<ImageView>(R.id.post_image_comment_btn)
-        textView.text=myDataList[position].userName
-        textViewName.text=myDataList[position].userName
-        textViewCaption.text=myDataList[position].caption
+        textView.text=myDataList[temp].userName
+        textViewName.text=myDataList[temp].userName
+        textViewCaption.text=myDataList[temp].caption
         Log.e("asdddd",myDataList.size.toString())
-        Picasso.get().load(myDataList[position].imageUrl).into(image)
+        Picasso.get().load(myDataList[temp].imageUrl).into(image)
 
         userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -87,7 +86,7 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
             }
         })
         textViewComment.setOnClickListener {
-            val action=SocialFragmentDirections.actionSocialFragmentToCommentFragment(myDataList[position].id)
+            val action=SocialFragmentDirections.actionSocialFragmentToCommentFragment(myDataList[temp].id)
             holder.itemView.findNavController().navigate(action)
 
         }
@@ -100,15 +99,27 @@ class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAd
             val text= EditText(holder.itemView.context)
             builder.setView(text)
             builder.setPositiveButton("Publish"){_,_->
+                var userName=""
+                var userReference2 = databaseReference?.child(currentuser!!.uid)
+                userReference2?.addValueEventListener(object :ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                       userName= snapshot.child("username").value.toString()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                })
+
                 userReference?.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
-                        userName = (snapshot.child("username").value.toString())
 
 
                         val comment = hashMapOf(
                             "userId" to currentuser?.uid!!,
-                            "postId" to myDataList[position].id,
+                            "postId" to myDataList[temp].id,
                             "userName" to userName,
                             "comment" to text.text.toString(),
                             "commentDate" to Timestamp.now()

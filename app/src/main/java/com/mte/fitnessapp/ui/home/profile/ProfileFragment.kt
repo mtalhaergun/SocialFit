@@ -49,26 +49,8 @@ class ProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth= FirebaseAuth.getInstance()
         database=FirebaseDatabase.getInstance()
-        databaseReference=database?.reference!!.child("profile")
-        var userReference = databaseReference?.child(auth.uid!!)
-        var profilPhoto=""
-        var userName=""
-        userReference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                profilPhoto = (snapshot.child("profilPhoto").value.toString())
-                userName = (snapshot.child("username").value.toString())
-                binding.profileName.text=userName
-                if (profilPhoto!="null"){
-                    Log.e("id:",profilPhoto)
-                    Picasso.get().load(profilPhoto).into(binding.profilPhoto)
-                }
 
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
     }
 
     override fun onCreateView(
@@ -80,6 +62,26 @@ class ProfileFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        list.clear()
+        databaseReference=database?.reference!!.child("profile")
+        var userReference = databaseReference?.child(auth.uid!!)
+        var profilPhoto=""
+        var userName=""
+        userReference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                profilPhoto = (snapshot.child("profilPhoto").value.toString())
+                userName = (snapshot.child("username").value.toString())
+                binding.profileName.text=userName
+                if (profilPhoto!="null"){
+                    Picasso.get().load(profilPhoto).into(binding.profilPhoto)
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
 
         val resim = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             if (uri != null) {
@@ -110,8 +112,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.settingsImage.setOnClickListener {
-            val navigation = ProfileFragmentDirections.actionProfileFragmentToSettingsFragment()
-            findNavController().navigate(navigation)
+
+            findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
 
         db.collection("posts").document(auth.uid!!).collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)

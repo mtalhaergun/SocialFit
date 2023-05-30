@@ -11,14 +11,18 @@ import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.ktx.Firebase
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.CommentRowBinding
 import com.mte.fitnessapp.model.post.Comment
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.delay
 
 class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context) : RecyclerView.Adapter<CommentAdapter.DataVH>() {
@@ -27,6 +31,8 @@ class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context)
     var control:Boolean=false
 
 
+    val database= FirebaseDatabase.getInstance()
+    val databaseReference=database?.reference!!.child("profile")
     class DataVH(itemView: View): RecyclerView.ViewHolder(itemView){
 
         private lateinit var binding: CommentRowBinding
@@ -42,14 +48,30 @@ class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context)
     }
 
     override fun onBindViewHolder(holder: DataVH, position: Int) {
+        var profilPhoto=""
         var currentUser=auth.currentUser
         val textView = holder.itemView.findViewById<TextView>(R.id.userNameTitle1)
         val textView2= holder.itemView.findViewById<TextView>(R.id.commentTitle1)
         val deleteButton= holder.itemView.findViewById<ImageView>(R.id.delete_comment)
+        var userReference = databaseReference?.child(myDataList[position].userId)
+        val profilImage=holder.itemView.findViewById<ImageView>(R.id.publisher_image_profile)
         textView.text=myDataList[position].userName
         textView2.text=myDataList[position].comment
         deleteButton.isVisible = myDataList[position].control==true
+        userReference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                profilPhoto = (snapshot.child("profilPhoto").value.toString())
+                if (profilPhoto!="null"){
+                    Log.e("id:",profilPhoto)
+                    Picasso.get().load(profilPhoto).into(profilImage)
+                }
 
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
         deleteButton.setOnClickListener {
             val popUpMenu = PopupMenu(mContext,it)
             popUpMenu.inflate(R.menu.photo_menu)

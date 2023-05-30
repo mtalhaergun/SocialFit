@@ -41,6 +41,7 @@ class SettingsFragment : Fragment() {
         var currentuser = auth.currentUser
         var userReference = databaseReference?.child(currentuser?.uid!!)
 
+
         userReference?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.editTextEposta.setText(currentuser!!.email).toString()
@@ -54,7 +55,8 @@ class SettingsFragment : Fragment() {
 
         })
 
-        binding.cikisYap.setOnClickListener { auth.signOut()
+        binding.cikisYap.setOnClickListener {
+            auth.signOut()
             val intent= Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
             activity?.finish()
@@ -88,24 +90,26 @@ class SettingsFragment : Fragment() {
 
         }
         binding.buttonGuncelle.setOnClickListener {
-          var guncelleEmail=binding.editTextEposta.text.toString().trim()
-            currentuser!!.updateEmail(guncelleEmail).addOnCompleteListener {
-                if (it.isSuccessful){
-                    Toast.makeText(requireContext(),"Email Güncellendi",Toast.LENGTH_SHORT).show()
+            var currentUserDb=currentuser?.let { it1->databaseReference?.child(it1.uid) }
+            currentUserDb?.removeValue()
+            currentUserDb?.child("email")?.setValue(binding.editTextEposta.text.toString())
+            currentUserDb?.child("username")?.setValue(binding.editTextAd.text.toString())
+            var guncelleEmail=binding.editTextEposta.text.toString().trim()
+            if(binding.editTextAd.text.toString()!=currentuser?.email){
+                currentuser!!.updateEmail(guncelleEmail).addOnCompleteListener {
+                    if (it.isSuccessful){
+                        Toast.makeText(requireContext(),"Email Güncellendi",Toast.LENGTH_SHORT).show()
+                        auth.signOut()
+                        val intent= Intent(requireContext(), LoginActivity::class.java)
+                        startActivity(intent)
 
-                }else{
-                    Toast.makeText(requireContext(),"Email güncelleme başarısız",Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(requireContext(),"Email güncelleme başarısız",Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 
-            var currentUserDb=currentuser?.let { it1->databaseReference?.child(it1.uid) }
-            currentUserDb?.removeValue()
-            currentUserDb?.child("username")?.setValue(binding.editTextAd.text.toString())
-            currentUserDb?.child("email")?.setValue(binding.editTextEposta.text.toString())
 
-            auth.signOut()
-            val intent= Intent(requireContext(), LoginActivity::class.java)
-            startActivity(intent)
         }
 
 
