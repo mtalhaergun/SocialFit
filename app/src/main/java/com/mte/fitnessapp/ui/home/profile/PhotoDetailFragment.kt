@@ -116,6 +116,7 @@ class PhotoDetailFragment : Fragment() {
             alert.show()
         }
 
+
         binding.viewComments.setOnClickListener {
             val action= PhotoDetailFragmentDirections.actionPhotoDetailFragmentToCommentFragment(data.id)
             findNavController().navigate(action)
