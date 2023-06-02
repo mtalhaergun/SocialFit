@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentNutrientsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -67,6 +68,10 @@ class NutrientsFragment : Fragment() {
                 Toast.makeText(context,"Please search for a valid nutrient name",Toast.LENGTH_SHORT).show()
             }
         })
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroy() {

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentFavoritesBinding
@@ -151,6 +152,10 @@ class FavoritesFragment : Fragment() {
                 return true
             }
         })
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 

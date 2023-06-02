@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.navigation.fragment.findNavController
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentOnerepmaxBinding
 
@@ -69,6 +70,9 @@ class OnerepmaxFragment : Fragment() {
 
         })
 
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 

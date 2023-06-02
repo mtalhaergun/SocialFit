@@ -2,6 +2,7 @@ package com.mte.fitnessapp.ui.home.social
 
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,6 +25,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentUploadPhotoBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import java.util.UUID
 
 
@@ -134,6 +137,10 @@ class UploadPhotoFragment : Fragment() {
                         binding.imageView2.setImageResource(R.drawable.upload_photo)
                         binding.button2.isEnabled=false
 
+                        runBlocking {
+                            delay(2000)
+                            findNavController().popBackStack()
+                        }
 
 
                     }.addOnFailureListener {
@@ -144,10 +151,10 @@ class UploadPhotoFragment : Fragment() {
 
 
         }
-        binding.button3.setOnClickListener {
-            findNavController().navigate(R.id.action_uploadPhotoFragment_to_socialFragment)
-        }
 
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 

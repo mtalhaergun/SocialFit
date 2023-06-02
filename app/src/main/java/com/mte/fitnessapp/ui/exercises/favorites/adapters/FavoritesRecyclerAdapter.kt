@@ -4,10 +4,13 @@ import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.mte.fitnessapp.databinding.RecyclerFavoritesLayoutBinding
 import com.mte.fitnessapp.model.favorites.Favorites
 import com.mte.fitnessapp.room.FavoritesDao
+import com.mte.fitnessapp.ui.exercises.ExercisesFragmentDirections
+import com.mte.fitnessapp.ui.exercises.favorites.FavoritesFragmentDirections
 import com.mte.fitnessapp.ui.exercises.favorites.FavoritesViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,6 +34,8 @@ class FavoritesRecyclerAdapter(private val viewModel: FavoritesViewModel) : Recy
                     viewModel.favorites.value = fdao.getFavorites()
                 }
             }
+
+
         }
     }
 
@@ -43,6 +48,10 @@ class FavoritesRecyclerAdapter(private val viewModel: FavoritesViewModel) : Recy
     override fun onBindViewHolder(holder: FavoritesVH, position: Int) {
         holder.bind(favoriteList[position],position,fdao!!)
 
+        holder.itemView.setOnClickListener {
+            val navigation = FavoritesFragmentDirections.actionFavoritesFragmentToExercisesDetailFragment(favoriteList[position],null)
+            Navigation.findNavController(it).navigate(navigation)
+        }
     }
 
     override fun getItemCount(): Int {

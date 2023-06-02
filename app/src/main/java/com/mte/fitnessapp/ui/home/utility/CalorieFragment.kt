@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.navigation.fragment.findNavController
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentCalorieBinding
 
@@ -133,6 +134,9 @@ class CalorieFragment : Fragment() {
             }
         }
 
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 

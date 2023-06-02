@@ -17,12 +17,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@drawable/backbutton"/>
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_gravity="center"
                 app:cardUseCompatPadding="true"
                 app:cardBackgroundColor="#ECECEC"
                 android:layout_weight="1">
@@ -40,7 +47,7 @@
                 android:id="@+id/favoritesButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="6dp"
+                android:layout_gravity="center"
                 android:src="@drawable/favorite_heart"
                 android:layout_marginEnd="2dp"
                 android:translationZ="90dp"

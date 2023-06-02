@@ -7,14 +7,36 @@
     tools:context=".ui.home.social.UploadPhotoFragment" >
 
     <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center"
+        android:src="@drawable/backbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Upload Photo"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toBottomOf="@+id/backButton"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
+
+    <ImageView
         android:id="@+id/imageView2"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/upload_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/commentEditTextText"
@@ -36,17 +58,10 @@
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:text="Upload"
+        android:background="@drawable/btnclr"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commentEditTextText" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="153dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="16dp"
-        android:text="Social Page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

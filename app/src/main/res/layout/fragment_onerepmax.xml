@@ -21,20 +21,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="4dp"
+                android:layout_gravity="center"
+                android:src="@drawable/backbutton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/title"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
                 android:text="1RM CALCULATOR"
                 android:textAlignment="center"
                 android:textColor="#E1CB0A"
-                android:textSize="35sp"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/backButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/backButton" />
 
             <TextView
                 android:id="@+id/onermtext"
@@ -203,6 +213,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Calculate"
+                android:background="@drawable/btnclr"
+                android:textSize="18sp"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutReps" />

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentBodyFatBinding
 import kotlin.math.log
@@ -84,7 +85,7 @@ class BodyFatFragment : Fragment() {
                             binding.apply {
                                 var weight = weight.text.toString().toDouble()
                                 var height : Double = height.text.toString().toDouble()
-                                var age = editTextAge.text.toString().toInt()
+                                var hip = editTextHip.text.toString().toDouble()
                                 var waist = editTextWaist.text.toString().toDouble()
                                 var neck = editTextNeck.text.toString().toDouble()
 
@@ -95,7 +96,9 @@ class BodyFatFragment : Fragment() {
                                 }
                                 if(checkBoxFemale.isChecked){
                                     if(editTextHip.text.toString().toInt() > 39 && editTextHip.text.toString().toInt() < 201){
+                                        var fat = (495/(1.29579-(0.35004* log(waist+hip-neck, 10.0))+(0.22100*log(height,10.0))))-450
 
+                                        binding.fat.text = String.format("%.1f",fat)
                                     }else{
                                         Toast.makeText(context,"Please enter a valid hip size!", Toast.LENGTH_SHORT).show()
                                     }
@@ -113,6 +116,10 @@ class BodyFatFragment : Fragment() {
             }else{
                 Toast.makeText(context,"You must fill in all the information!", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentQuestionsBinding
 import com.mte.fitnessapp.model.exercises.ExercisesItem
@@ -86,6 +87,10 @@ class QuestionsFragment : Fragment() {
                 return true
             }
         })
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
 
     }

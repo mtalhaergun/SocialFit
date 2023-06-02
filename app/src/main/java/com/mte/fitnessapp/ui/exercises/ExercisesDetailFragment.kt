@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentExercisesDetailBinding
@@ -43,7 +44,12 @@ class ExercisesDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        binding.exercise = args.exercisearg
+        if(args.exercisearg != null){
+            binding.titleExercise.text = args.exercisearg!!.name
+        }else{
+            binding.titleExercise.text = args.favoritesarg!!.name
+        }
+
         val iFramePlayerOptions = IFramePlayerOptions.Builder()
             .controls(1)
             .fullscreen(0)
@@ -51,7 +57,13 @@ class ExercisesDetailFragment : Fragment() {
         lifecycle.addObserver(binding.youtubePlayerView)
         binding.youtubePlayerView.initialize(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                val videoId = args.exercisearg?.videoUrl
+                var videoId : String?
+                if(args.exercisearg != null){
+                    videoId = args.exercisearg?.videoUrl
+                }else{
+                    videoId = args.favoritesarg?.videoUrl
+                }
+
                 if (videoId != null) {
                     youTubePlayer.loadVideo(videoId, 0f)
                 }
@@ -60,7 +72,7 @@ class ExercisesDetailFragment : Fragment() {
 
 
         binding.xButton.setOnClickListener {
-            onDestroyView()
+            findNavController().popBackStack()
         }
     }
 
@@ -69,16 +81,5 @@ class ExercisesDetailFragment : Fragment() {
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         _binding = null
     }
-
-//    override fun onConfigurationChanged(newConfig: Configuration) {
-//        super.onConfigurationChanged(newConfig)
-//
-//        // Checks the orientation of the screen
-//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            binding.youtubePlayerView.matchParent()
-//        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-//            binding.youtubePlayerView.wrapContent()
-//        }
-//    }
 
 }

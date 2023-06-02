@@ -108,7 +108,7 @@ class ExercisesFragment : Fragment() {
 
         adapterExercise = ExerciseAdapter(object : ExerciseClickListener{
             override fun onExerciseClick(exercise: ExercisesItem) {
-                val navigation = ExercisesFragmentDirections.actionExercisesFragmentToExercisesDetailFragment(exercise)
+                val navigation = ExercisesFragmentDirections.actionExercisesFragmentToExercisesDetailFragment(null,exercise)
                 Navigation.findNavController(requireView()).navigate(navigation)
 //                val showPopUp = ExercisesDetailFragment(exercise)
 //                showPopUp.show(parentFragmentManager,"showPopUp")
@@ -144,6 +144,10 @@ class ExercisesFragment : Fragment() {
         binding.favoritesButton.setOnClickListener {
             val navigation = ExercisesFragmentDirections.actionExercisesFragmentToFavoritesFragment()
             Navigation.findNavController(it).navigate(navigation)
+        }
+
+        binding.backButton.setOnClickListener {
+            activity?.finish()
         }
 
 

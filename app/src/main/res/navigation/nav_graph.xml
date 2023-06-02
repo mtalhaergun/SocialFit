@@ -20,11 +20,7 @@
         android:id="@+id/nutrientsFragment"
         android:name="com.mte.fitnessapp.ui.home.guide.nutrients.NutrientsFragment"
         android:label="fragment_nutrients"
-        tools:layout="@layout/fragment_nutrients">
-        <action
-            android:id="@+id/action_nutrientsFragment_to_guideFragment"
-            app:destination="@id/guideFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_nutrients"/>
     <fragment
         android:id="@+id/workoutFragment"
         android:name="com.mte.fitnessapp.ui.home.workout.WorkoutFragment"
@@ -78,9 +74,6 @@
         android:label="fragment_questions"
         tools:layout="@layout/fragment_questions" >
         <action
-            android:id="@+id/action_questionsFragment_to_guideFragment"
-            app:destination="@id/guideFragment" />
-        <action
             android:id="@+id/action_questionsFragment_to_questionsDetailFragment"
             app:destination="@id/questionsDetailFragment" />
     </fragment>
@@ -89,9 +82,6 @@
         android:name="com.mte.fitnessapp.ui.home.guide.questions.QuestionsDetailFragment"
         android:label="fragment_questions_detail"
         tools:layout="@layout/fragment_questions_detail" >
-        <action
-            android:id="@+id/action_questionsDetailFragment_to_questionsFragment"
-            app:destination="@id/questionsFragment" />
         <argument
             android:name="questionsarg"
             app:argType="com.mte.fitnessapp.model.questions.QuestionsItem" />

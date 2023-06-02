@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentBmiBinding
 
@@ -110,6 +111,10 @@ class BmiFragment : Fragment() {
             }else{
                 Toast.makeText(context,"You must fill in all the information!",Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
         }
 
     }

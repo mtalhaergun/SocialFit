@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -85,6 +86,11 @@ class CommentFragment : Fragment() {
         binding.rVComment.setHasFixedSize(true)
         recyclerViewAdapter= CommentAdapter(comment,requireContext())
         binding.rVComment.adapter=recyclerViewAdapter
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
     }
     
 }
