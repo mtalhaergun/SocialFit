@@ -1,5 +1,6 @@
 package com.mte.fitnessapp.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,7 @@ import com.mte.fitnessapp.ui.home.social.SocialFragmentDirections
 import com.squareup.picasso.Picasso
 
 
-class PostAdapter(val myDataList: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.DataVH>() {
+class PostAdapter(val myDataList: ArrayList<Post>,val mContext:Context) : RecyclerView.Adapter<PostAdapter.DataVH>() {
     val db= Firebase.firestore
     val auth= FirebaseAuth.getInstance()
 

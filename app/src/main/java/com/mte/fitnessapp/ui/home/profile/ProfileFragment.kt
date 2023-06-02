@@ -100,10 +100,7 @@ class ProfileFragment : Fragment() {
                         currentUserDb?.child("profilPhoto")?.setValue(downloadPhoto)
                         binding.profilPhoto.setImageURI(imageUri)
                     }
-
-
                 }
-
             }
         }
         binding.profilPhoto.setOnClickListener {
@@ -116,12 +113,16 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
 
-        db.collection("posts").document(auth.uid!!).collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
+        db.collection("posts").document(auth.uid!!).collection("photos")
+            .orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
             .addSnapshotListener { value2, error1 ->
 
                 if (value2 != null) {
                     value2.documents.forEach {
-                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}",auth.uid!!))
+                        list.add(Post("${it.id}","${it.getField<String>("userName")}",
+                            "${it.getField<String>("imageUrl")}",
+                            "${it.getField<String>("caption")}",
+                            auth.uid!!))
                         adapterPhotos.notifyDataSetChanged()
                     }
                 }
