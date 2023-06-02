@@ -61,12 +61,17 @@ class CommentFragment : Fragment() {
                                 value2.documents.forEach {
                                     if (it.id==data){
                                         db.collection("posts").document(document.id).collection("photos")
-                                            .document(it.id).collection("comment").orderBy("commentDate",com.google.firebase.firestore.Query.Direction.ASCENDING).addSnapshotListener { value3, error3 ->
+                                            .document(it.id).collection("comment").orderBy("commentDate",
+                                                com.google.firebase.firestore.Query.Direction.ASCENDING).addSnapshotListener {
+                                                    value3, error3 ->
                                             if (value3!=null){
                                                 value3.documents.forEach{
                                                     control = document.id==auth.uid
-                                                    Log.e("control",control.toString())
-                                                    comment.add(Comment(it.id,"${it.getField<String>("userId")}","${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",control))
+
+                                                    comment.add(Comment(it.id,"${it.getField<String>("userId")}"
+                                                        ,"${it.getField<String>("postId")}",
+                                                        "${it.getField<String>("comment")}",
+                                                        "${it.getField<String>("userName")}",control))
                                                     recyclerViewAdapter.notifyDataSetChanged()
                                                 }
                                             }

@@ -92,7 +92,7 @@ class SocialFragment : Fragment() {
 
         binding.rVPost.layoutManager= LinearLayoutManager(requireContext())
         binding.rVPost.setHasFixedSize(true)
-        recyclerViewAdapter= PostAdapter(list)
+        recyclerViewAdapter= PostAdapter(list,requireContext())
         binding.rVPost.adapter=recyclerViewAdapter
     }
 

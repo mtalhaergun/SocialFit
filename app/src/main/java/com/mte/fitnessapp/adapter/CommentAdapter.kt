@@ -87,7 +87,7 @@ class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context)
                             .addOnSuccessListener {
                                 db.collection("posts").document(myDataList[position].userId)
                                     .collection("photos").document(myDataList[position].postId)
-                                    .collection("comment").addSnapshotListener { value, error ->
+                                    .collection("comment").orderBy("commentDate",com.google.firebase.firestore.Query.Direction.ASCENDING).addSnapshotListener { value, error ->
                                         if(value==null){}
                                         value?.documents!!.forEach {
                                             comment.add(Comment(it.id,"${it.getField<String>("userId")}","${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",true))
