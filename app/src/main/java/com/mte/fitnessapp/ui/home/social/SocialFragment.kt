@@ -95,14 +95,7 @@ class SocialFragment : Fragment() {
         binding.rVPost.setHasFixedSize(true)
         recyclerViewAdapter= PostAdapter(list,requireContext())
         binding.rVPost.adapter=recyclerViewAdapter
-        binding.socialShimmerInclude.cardListShimmer.startShimmer()
 
-        Handler().postDelayed({
-            binding.rVPost.visibility = View.VISIBLE
-            binding.socialShimmerInclude.root.visibility = View.GONE
-            binding.socialShimmerInclude.cardListShimmer.stopShimmer()
-
-        },1500)
     }
 
 }
