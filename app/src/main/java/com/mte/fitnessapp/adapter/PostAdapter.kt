@@ -66,11 +66,39 @@ class PostAdapter(val myDataList: ArrayList<Post>,val mContext:Context) : Recycl
         val image= holder.itemView.findViewById<ImageView>(R.id.post_image)
         val profilImage=holder.itemView.findViewById<ImageView>(R.id.publisher_profile_image_post)
         val commentButton=holder.itemView.findViewById<ImageView>(R.id.post_image_comment_btn)
+        val likebutton=holder.itemView.findViewById<ImageView>(R.id.post_image_like_btn)
+        val likeText=holder.itemView.findViewById<TextView>(R.id.likes)
         textView.text=myDataList[temp].userName
         textViewName.text=myDataList[temp].userName
         textViewCaption.text=myDataList[temp].caption
         Log.e("asdddd",myDataList.size.toString())
         Picasso.get().load(myDataList[temp].imageUrl).into(image)
+        db.collection("photos").document(myDataList[temp].id).collection("likes")
+            .addSnapshotListener { value, error ->
+            val values=value!!.documents
+                likeText.text="${values.size} likes"
+                values.forEach {
+                    if (it.id==currentuser!!.uid){
+                        likebutton.isSelected=true
+                    }
+                }
+        }
+
+        likebutton.setOnClickListener {
+            val like = hashMapOf(
+                "id" to auth.currentUser!!.uid
+
+
+            )
+            if(!likebutton.isSelected){
+                db.collection("photos").document(myDataList[temp].id).collection("likes").document(currentuser!!.uid).set(like)
+            }else{
+                db.collection("photos").document(myDataList[temp].id).collection("likes").document(currentuser!!.uid).delete()
+            }
+
+            likebutton.isSelected=!likebutton.isSelected
+        }
+
 
         userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

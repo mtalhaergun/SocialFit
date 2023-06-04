@@ -60,7 +60,7 @@
                 android:id="@+id/post_image_like_btn"
                 android:layout_width="35dp"
                 android:layout_height="38dp"
-                android:src="@drawable/heart_not_clicked" />
+                android:src="@drawable/like_selector" />
 
             <ImageView
                 android:id="@+id/post_image_comment_btn"
