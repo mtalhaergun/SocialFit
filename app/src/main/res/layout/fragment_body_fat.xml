@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="(Average)"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#FFEB3B"
                 android:textSize="23sp"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayoutFat"
                 app:layout_constraintStart_toStartOf="@+id/linearLayoutFat"

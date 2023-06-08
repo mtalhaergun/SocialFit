@@ -1,5 +1,6 @@
 package com.mte.fitnessapp.ui.home.utility
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -85,20 +86,66 @@ class BodyFatFragment : Fragment() {
                             binding.apply {
                                 var weight = weight.text.toString().toDouble()
                                 var height : Double = height.text.toString().toDouble()
-                                var hip = editTextHip.text.toString().toDouble()
                                 var waist = editTextWaist.text.toString().toDouble()
                                 var neck = editTextNeck.text.toString().toDouble()
 
                                 if (checkBoxMale.isChecked){
                                     var fat = (495/(1.0324-(0.19077* log(waist-neck, 10.0))+(0.15456*log(height,10.0))))-450
 
-                                    binding.fat.text = String.format("%.1f",fat)
+                                    if(fat >= 2 && fat < 5){
+                                        binding.fattext2.text = "(Essential Fat)"
+                                        binding.fattext2.setTextColor(Color.parseColor("#FFEB3B"))
+                                        binding.fat.text = String.format("%.1f",fat)
+                                    }else if(fat >= 5 && fat < 13){
+                                        binding.fattext2.text = "(Athletes)"
+                                        binding.fattext2.setTextColor(Color.parseColor("#24FF39"))
+                                        binding.fat.text = String.format("%.1f",fat)
+                                    }else if(fat >= 13 && fat < 17){
+                                        binding.fattext2.text = "(Fitness)"
+                                        binding.fattext2.setTextColor(Color.parseColor("#4CAF50"))
+                                        binding.fat.text = String.format("%.1f",fat)
+                                    }else if(fat >= 17 && fat < 24){
+                                        binding.fattext2.text = "(Average)"
+                                        binding.fattext2.setTextColor(Color.parseColor("#FFEB3B"))
+                                        binding.fat.text = String.format("%.1f",fat)
+                                    }else if(fat >= 24){
+                                        binding.fattext2.text = "(Obese)"
+                                        binding.fattext2.setTextColor(Color.parseColor("#9F0000"))
+                                        binding.fat.text = String.format("%.1f",fat)
+                                    }else{
+                                        Toast.makeText(context,"Invalid value, enter different values", Toast.LENGTH_SHORT).show()
+                                    }
+
                                 }
                                 if(checkBoxFemale.isChecked){
+                                    var hip = editTextHip.text.toString().toDouble()
                                     if(editTextHip.text.toString().toInt() > 39 && editTextHip.text.toString().toInt() < 201){
                                         var fat = (495/(1.29579-(0.35004* log(waist+hip-neck, 10.0))+(0.22100*log(height,10.0))))-450
 
-                                        binding.fat.text = String.format("%.1f",fat)
+                                        if(fat >= 10 && fat < 13){
+                                            binding.fattext2.text = "(Essential Fat)"
+                                            binding.fattext2.setTextColor(Color.parseColor("#FFEB3B"))
+                                            binding.fat.text = String.format("%.1f",fat)
+                                        }else if(fat >= 13 && fat < 20){
+                                            binding.fattext2.text = "(Athletes)"
+                                            binding.fattext2.setTextColor(Color.parseColor("#24FF39"))
+                                            binding.fat.text = String.format("%.1f",fat)
+                                        }else if(fat >= 20 && fat < 24){
+                                            binding.fattext2.text = "(Fitness)"
+                                            binding.fattext2.setTextColor(Color.parseColor("#4CAF50"))
+                                            binding.fat.text = String.format("%.1f",fat)
+                                        }else if(fat >= 24 && fat < 31){
+                                            binding.fattext2.text = "(Average)"
+                                            binding.fattext2.setTextColor(Color.parseColor("#FFEB3B"))
+                                            binding.fat.text = String.format("%.1f",fat)
+                                        }else if(fat >= 31){
+                                            binding.fattext2.text = "(Obese)"
+                                            binding.fattext2.setTextColor(Color.parseColor("#9F0000"))
+                                            binding.fat.text = String.format("%.1f",fat)
+                                        }else{
+                                            Toast.makeText(context,"Invalid value, enter different values", Toast.LENGTH_SHORT).show()
+                                        }
+
                                     }else{
                                         Toast.makeText(context,"Please enter a valid hip size!", Toast.LENGTH_SHORT).show()
                                     }

@@ -46,6 +46,7 @@
                 android:background="@drawable/btn"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:maxLength="20"
                 android:paddingLeft="20dp"
                 android:textColor="@color/white"
                 android:textColorHint="#fffbf8"

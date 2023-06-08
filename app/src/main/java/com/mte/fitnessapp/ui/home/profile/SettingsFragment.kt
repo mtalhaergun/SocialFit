@@ -83,7 +83,6 @@ class SettingsFragment : Fragment() {
                 auth.sendPasswordResetEmail(psifirlaemail)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-
                             Toast.makeText(requireContext(),"Şifre sıfırlama maili gönderildi", Toast.LENGTH_LONG).show()
                         }
                     }

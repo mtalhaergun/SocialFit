@@ -45,6 +45,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
+        android:maxLength="140"
         android:ems="10"
         android:hint="Caption"
         android:inputType="text"

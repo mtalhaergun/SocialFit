@@ -15,6 +15,18 @@
         <action
             android:id="@+id/action_guideFragment_to_questionsFragment"
             app:destination="@id/questionsFragment" />
+        <action
+            android:id="@+id/action_guideFragment_to_onerepmaxFragment"
+            app:destination="@id/onerepmaxFragment" />
+        <action
+            android:id="@+id/action_guideFragment_to_calorieFragment"
+            app:destination="@id/calorieFragment" />
+        <action
+            android:id="@+id/action_guideFragment_to_bmiFragment"
+            app:destination="@id/bmiFragment" />
+        <action
+            android:id="@+id/action_guideFragment_to_bodyFatFragment"
+            app:destination="@id/bodyFatFragment" />
     </fragment>
     <fragment
         android:id="@+id/nutrientsFragment"
@@ -37,24 +49,6 @@
         <action
             android:id="@+id/action_socialFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/utilityFragment"
-        android:name="com.mte.fitnessapp.ui.home.utility.UtilityFragment"
-        android:label="fragment_utility"
-        tools:layout="@layout/fragment_utility" >
-        <action
-            android:id="@+id/action_utilityFragment_to_bmiFragment"
-            app:destination="@id/bmiFragment" />
-        <action
-            android:id="@+id/action_utilityFragment_to_onerepmaxFragment"
-            app:destination="@id/onerepmaxFragment" />
-        <action
-            android:id="@+id/action_utilityFragment_to_calorieFragment"
-            app:destination="@id/calorieFragment" />
-        <action
-            android:id="@+id/action_utilityFragment_to_bodyFatFragment"
-            app:destination="@id/bodyFatFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -109,38 +103,22 @@
         android:id="@+id/bmiFragment"
         android:name="com.mte.fitnessapp.ui.home.utility.BmiFragment"
         android:label="fragment_bmi"
-        tools:layout="@layout/fragment_bmi" >
-        <action
-            android:id="@+id/action_bmiFragment_to_utilityFragment"
-            app:destination="@id/utilityFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_bmi" />
     <fragment
         android:id="@+id/onerepmaxFragment"
         android:name="com.mte.fitnessapp.ui.home.utility.OnerepmaxFragment"
         android:label="fragment_onerepmax"
-        tools:layout="@layout/fragment_onerepmax" >
-        <action
-            android:id="@+id/action_onerepmaxFragment_to_utilityFragment"
-            app:destination="@id/utilityFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_onerepmax" />
     <fragment
         android:id="@+id/calorieFragment"
         android:name="com.mte.fitnessapp.ui.home.utility.CalorieFragment"
         android:label="fragment_calorie"
-        tools:layout="@layout/fragment_calorie" >
-        <action
-            android:id="@+id/action_calorieFragment_to_utilityFragment"
-            app:destination="@id/utilityFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_calorie" />
     <fragment
         android:id="@+id/bodyFatFragment"
         android:name="com.mte.fitnessapp.ui.home.utility.BodyFatFragment"
         android:label="fragment_body_fat"
-        tools:layout="@layout/fragment_body_fat" >
-        <action
-            android:id="@+id/action_bodyFatFragment_to_utilityFragment"
-            app:destination="@id/utilityFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_body_fat" />
     <fragment
         android:id="@+id/photoDetailFragment"
         android:name="com.mte.fitnessapp.ui.home.profile.PhotoDetailFragment"

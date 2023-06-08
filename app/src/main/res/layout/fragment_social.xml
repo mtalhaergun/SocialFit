@@ -25,7 +25,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginBottom="48dp"
         android:contentDescription="hkjl"
-        android:src="@drawable/ic_add_photo_icon"
+        android:src="@drawable/add_photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

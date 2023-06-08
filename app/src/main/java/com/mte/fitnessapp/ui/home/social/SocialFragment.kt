@@ -77,19 +77,19 @@ class SocialFragment : Fragment() {
             findNavController().navigate(R.id.action_socialFragment_to_uploadPhotoFragment)
         }
 
-                        Log.e("ccc","aaa")
+        Log.e("ccc","aaa")
 
-                        db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
-                            .addSnapshotListener { value2, error1 ->
+        db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .addSnapshotListener { value2, error1 ->
 
-                                if (value2 != null) {
-                                    value2.documents.forEach {
-                                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
-                                        recyclerViewAdapter.notifyDataSetChanged()
+                if (value2 != null) {
+                    value2.documents.forEach {
+                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
+                        recyclerViewAdapter.notifyDataSetChanged()
 
-                                    }
-                                }
-                            }
+                    }
+                }
+            }
 
         binding.rVPost.layoutManager= LinearLayoutManager(requireContext())
         binding.rVPost.setHasFixedSize(true)
