@@ -123,6 +123,7 @@ class UploadPhotoFragment : Fragment() {
                                                     .collection("photos")
                                                     .document(uuid.toString()).collection("comment")
                                             }
+
                                     }
 
                             }
@@ -138,8 +139,8 @@ class UploadPhotoFragment : Fragment() {
                         binding.button2.isEnabled=false
 
                         runBlocking {
-                            delay(2000)
-                            findNavController().popBackStack()
+                            delay(1000)
+                            findNavController().navigate(R.id.action_uploadPhotoFragment_to_socialFragment)
                         }
 
 

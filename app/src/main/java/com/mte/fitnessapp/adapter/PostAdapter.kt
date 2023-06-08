@@ -84,19 +84,20 @@ class PostAdapter(val myDataList: ArrayList<Post>,val mContext:Context) : Recycl
                 }
         }
 
+
         likebutton.setOnClickListener {
             val like = hashMapOf(
                 "id" to auth.currentUser!!.uid
-
-
             )
-            if(!likebutton.isSelected){
+            if(likebutton.isSelected==false){
                 db.collection("photos").document(myDataList[temp].id).collection("likes").document(currentuser!!.uid).set(like)
-            }else{
-                db.collection("photos").document(myDataList[temp].id).collection("likes").document(currentuser!!.uid).delete()
-            }
+                likebutton.isSelected=true
 
-            likebutton.isSelected=!likebutton.isSelected
+            }else if (likebutton.isSelected==true){
+                db.collection("photos").document(myDataList[temp].id).collection("likes").document(currentuser!!.uid).delete()
+                likebutton.isSelected=false
+
+            }
         }
 
 
