@@ -1,86 +1,394 @@
 [
   {
     "id": 1,
-    "name": "Barbell Curl",
+    "name": "Dumbbell Curl",
     "category": "Biceps",
     "description": "...",
-    "videoUrl": "kwG2ipFRgfo"
+    "videoUrl": "ykJmrZ5v0Oo"
   },
   {
     "id": 2,
-    "name": "Hammer Curl",
-    "category": "Biceps",
-    "description": "...",
-    "videoUrl": "TwD-YGVP4Bk"
-  },
-  {
-    "id": 3,
-    "name": "Incline Curl",
-    "category": "Biceps",
-    "description": "...",
-    "videoUrl": "NHUVgJJ3MBA"
-  },
-  {
-    "id": 4,
-    "name": "Cable Curl",
-    "category": "Biceps",
-    "description": "...",
-    "videoUrl": "-n7wb4WPdic"
-  },
-  {
-    "id": 5,
-    "name": "Reverse Barbell Curl",
-    "category": "Biceps",
-    "description": "...",
-    "videoUrl": "nRgxYX2Ve9w"
-  },
-  {
-    "id": 6,
     "name": "Concentration Curl",
     "category": "Biceps",
     "description": "...",
     "videoUrl": "0AUGkch3tzc"
   },
   {
-    "id": 7,
-    "name": "Bench Dips",
-    "category": "Triceps",
+    "id": 3,
+    "name": "Hammer Curl",
+    "category": "Biceps",
     "description": "...",
-    "videoUrl": "c3ZGl4pAwZ4"
+    "videoUrl": "TwD-YGVP4Bk"
+  },
+  {
+    "id": 4,
+    "name": "Incline Hammer Curl",
+    "category": "Biceps",
+    "description": "...",
+    "videoUrl": "wSA84j9ZG4c"
+  },
+  {
+    "id": 5,
+    "name": "Barbell Curl",
+    "category": "Biceps",
+    "description": "...",
+    "videoUrl": "kwG2ipFRgfo"
+  },
+  {
+    "id": 6,
+    "name": "Wide-grip Barbell Curl",
+    "category": "Biceps",
+    "description": "...",
+    "videoUrl": "jnfveKq1i3E"
+  },
+  {
+    "id": 7,
+    "name": "Zottman Curl",
+    "category": "Biceps",
+    "description": "...",
+    "videoUrl": "wrjEdVZrkhk"
   },
   {
     "id": 8,
-    "name": "Push Up",
-    "category": "Chest",
+    "name": "EZ-bar Spider Curl",
+    "category": "Biceps",
     "description": "...",
-    "videoUrl": "o-NC_xXrkDI"
+    "videoUrl": "WG3vdcq__I0"
   },
   {
     "id": 9,
-    "name": "Dumbbell Kick",
+    "name": "Triceps Dip",
     "category": "Triceps",
     "description": "...",
-    "videoUrl": "z3sm6YgpJho"
+    "videoUrl": "VsE1PIF_59w"
   },
   {
     "id": 10,
-    "name": "Barbell Bench Press",
+    "name": "Decline EZ-bar Skullcrusher",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "OpRLGph7El8"
+  },
+  {
+    "id": 11,
+    "name": "Dumbbell Floor Press",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "uUGDRwge4F8"
+  },
+  {
+    "id": 12,
+    "name": "Cable V-bar push-down",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "9MHIiSgDe7M"
+  },
+  {
+    "id": 13,
+    "name": "Reverse Grip Triceps Pushdown",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "f9tQYfBP-aA"
+  },
+  {
+    "id": 14,
+    "name": "Close Grip Push Ups",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "uv41503qvd0"
+  },
+  {
+    "id": 15,
+    "name": "Kneeling Cable Triceps",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "FVatq1DWUyo"
+  },
+  {
+    "id": 16,
+    "name": "Single-arm Cable Triceps",
+    "category": "Triceps",
+    "description": "...",
+    "videoUrl": "vjOefY0qd1Y"
+  },
+  {
+    "id": 17,
+    "name": "Bench Press",
     "category": "Chest",
     "description": "...",
     "videoUrl": "rT7DgCr-3pg"
   },
   {
-    "id": 11,
+    "id": 18,
     "name": "Dumbbell Bench Press",
     "category": "Chest",
     "description": "...",
-    "videoUrl": "VmB1G1K7v94"
+    "videoUrl": "hm_TrCkhJgo"
   },
   {
-    "id": 12,
-    "name": "Chest Fly",
+    "id": 19,
+    "name": "Dumbbell Flyes",
     "category": "Chest",
     "description": "...",
-    "videoUrl": "eozdVDA78K0"
+    "videoUrl": "UKwkChzThig"
+  },
+  {
+    "id": 20,
+    "name": "Close-grip Bench Press",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "XEFDMwmrLAM"
+  },
+  {
+    "id": 21,
+    "name": "Cable chest press",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "VAtKKIl0v5Q"
+  },
+  {
+    "id": 22,
+    "name": "Low-cable cross-over",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "azbCBSBuS8A"
+  },
+  {
+    "id": 22,
+    "name": "Chest dip",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "gtuf68B1_mE"
+  },
+  {
+    "id": 22,
+    "name": "Pushups",
+    "category": "Chest",
+    "description": "...",
+    "videoUrl": "IIpHnPCkl7Q"
+  },
+  {
+    "id": 23,
+    "name": "Sit ups",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "8pBsG75at6Q"
+  },
+  {
+    "id": 24,
+    "name": "Elbow Plank",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "zuHZyVg3zRA"
+  },
+  {
+    "id": 25,
+    "name": "V-ups",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "NxkukiEoh3g"
+  },
+  {
+    "id": 26,
+    "name": "Leg Raises",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "q0JVBRHoLz4"
+  },
+  {
+    "id": 27,
+    "name": "Crunch kicks",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "n6NYu9d7uwk"
+  },
+  {
+    "id": 28,
+    "name": "Side Plank",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "_R389Jk0tIo"
+  },
+  {
+    "id": 29,
+    "name": "Cross crunch",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "PkSFsgMtonY"
+  },
+  {
+    "id": 30,
+    "name": "Knee to Elbow",
+    "category": "Abs",
+    "description": "...",
+    "videoUrl": "wDbRpbJyMu8"
+  },
+  {
+    "id": 31,
+    "name": "Lateral Raise",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "n_r-ROwHkdA"
+  },
+  {
+    "id": 32,
+    "name": "Dumbbell Shoulder Press",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "ZdyjK36xZV4"
+  },
+  {
+    "id": 33,
+    "name": "Barbell Shoulder Press",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "IuzRCN6eG6Y"
+  },
+  {
+    "id": 34,
+    "name": "Arnold Press",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "R-RTgOxrj88"
+  },
+  {
+    "id": 35,
+    "name": "Front Raises",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "xagEKj2yDc8"
+  },
+  {
+    "id": 36,
+    "name": "Upright Row",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "uVquv6vAlMU"
+  },
+  {
+    "id": 37,
+    "name": "Reverse Cable Crossover",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "v_Fy0Jfvv6A"
+  },
+  {
+    "id": 38,
+    "name": "Cable Front Raise",
+    "category": "Shoulders",
+    "description": "...",
+    "videoUrl": "hf6nZ2dCoVs"
+  },
+  {
+    "id": 39,
+    "name": "Reverse-grip Bent-over",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "y3h8M_ECs-I"
+  },
+  {
+    "id": 40,
+    "name": "One-Arm Dumbbell Row",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "xl1YiqQY2vA"
+  },
+  {
+    "id": 41,
+    "name": "Seated Cable Rows",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "UCXxvVItLoM"
+  },
+  {
+    "id": 42,
+    "name": "Incline Dumbbell Row",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "tZUYS7X50so"
+  },
+  {
+    "id": 43,
+    "name": "Pullups",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "un6HKZo2Mhs"
+  },
+  {
+    "id": 44,
+    "name": "Pull-down",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "yQuJheNsgvA"
+  },
+  {
+    "id": 45,
+    "name": "Shotgun Row",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "zVNSVxv8M8A"
+  },
+  {
+    "id": 46,
+    "name": "Back Extension",
+    "category": "Back",
+    "description": "...",
+    "videoUrl": "zyBVlPuJeHg"
+  },
+  {
+    "id": 47,
+    "name": "Seated Leg Press",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "qCR9bN3G1t4"
+  },
+  {
+    "id": 48,
+    "name": "Leg Extensions",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "m0FOpMEgero"
+  },
+  {
+    "id": 49,
+    "name": "Lying Leg Curls",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "n5WDXD_mpVY"
+  },
+  {
+    "id": 50,
+    "name": "Leg Abductors",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "6tJjQFK_Q9U"
+  },
+  {
+    "id": 51,
+    "name": "Hack Squats",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "rYgNArpwE7E"
+  },
+  {
+    "id": 52,
+    "name": "Hip Thrust",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "EF7jXP17DPE"
+  },
+  {
+    "id": 53,
+    "name": "Squats",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "fKOXaTFVGho"
+  },
+  {
+    "id": 54,
+    "name": "Lunge",
+    "category": "Legs",
+    "description": "...",
+    "videoUrl": "c1OSIZu_2AI"
   }
 ]

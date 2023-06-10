@@ -37,6 +37,23 @@ class GuideFragment : Fragment() {
         binding.guideImage.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_guideFragment_to_questionsFragment)
         }
+
+        binding.bmi.setOnClickListener {
+            val navigation = GuideFragmentDirections.actionGuideFragmentToBmiFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
+        binding.onerep.setOnClickListener {
+            val navigation = GuideFragmentDirections.actionGuideFragmentToOnerepmaxFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
+        binding.calorie.setOnClickListener {
+            val navigation = GuideFragmentDirections.actionGuideFragmentToCalorieFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
+        binding.bodyfat.setOnClickListener {
+            val navigation = GuideFragmentDirections.actionGuideFragmentToBodyFatFragment()
+            Navigation.findNavController(it).navigate(navigation)
+        }
     }
 
 }

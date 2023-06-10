@@ -16,10 +16,6 @@
         android:icon="@drawable/social"
         android:title="Social" />
     <item
-        android:id="@+id/utilityFragment"
-        android:icon="@drawable/utility"
-        android:title="Utilities" />
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/person"
         android:title="Profile" />

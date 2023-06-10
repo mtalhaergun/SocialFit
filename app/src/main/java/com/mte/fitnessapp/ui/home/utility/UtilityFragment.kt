@@ -29,22 +29,7 @@ class UtilityFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.bmi.setOnClickListener {
-            val navigation = UtilityFragmentDirections.actionUtilityFragmentToBmiFragment()
-            Navigation.findNavController(it).navigate(navigation)
-        }
-        binding.onerep.setOnClickListener {
-            val navigation = UtilityFragmentDirections.actionUtilityFragmentToOnerepmaxFragment()
-            Navigation.findNavController(it).navigate(navigation)
-        }
-        binding.calorie.setOnClickListener {
-            val navigation = UtilityFragmentDirections.actionUtilityFragmentToCalorieFragment()
-            Navigation.findNavController(it).navigate(navigation)
-        }
-        binding.bodyfat.setOnClickListener {
-            val navigation = UtilityFragmentDirections.actionUtilityFragmentToBodyFatFragment()
-            Navigation.findNavController(it).navigate(navigation)
-        }
+
 
     }
 

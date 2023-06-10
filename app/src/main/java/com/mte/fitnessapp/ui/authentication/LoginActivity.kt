@@ -28,11 +28,13 @@ class LoginActivity : AppCompatActivity() {
         binding.loginBtn.setOnClickListener {
             var girisemail=binding.email.text.toString()
             var girissifre=binding.password.text.toString()
+
+
             if(TextUtils.isEmpty(girisemail)){
-                binding.email.error="Lütfen email adresinizi giriniz"
+                binding.email.error="Please enter your email address!"
                 return@setOnClickListener
             }else if(TextUtils.isEmpty(girissifre)){
-                binding.password.error="Lütfen şifrenizi giriniz"
+                binding.password.error="Please enter your password!"
                 return@setOnClickListener
             }
             //giris bilgilerini doğrulama
@@ -46,10 +48,10 @@ class LoginActivity : AppCompatActivity() {
                             finish()
                         }else{
 
-                            Toast.makeText(this,"Öncelikle Mail Adresinizi Doğrulamalısınız", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"Verify your e-mail address to login", Toast.LENGTH_LONG).show()
                         }
                     }else{
-                        Toast.makeText(applicationContext,"Giriş hatalı tekrar deneyiniz", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext,"The user information you entered is incorrect!", Toast.LENGTH_SHORT).show()
                     }
                 }
         }

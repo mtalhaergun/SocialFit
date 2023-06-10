@@ -2,6 +2,7 @@ package com.mte.fitnessapp.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -35,10 +36,21 @@ class MainActivity : AppCompatActivity() {
                 R.id.workoutFragment,
                 R.id.guideFragment,
                 R.id.socialFragment,
-                R.id.utilityFragment,
                 R.id.profileFragment
             )
         )
+
+        val noBottomNavigationIds =
+            listOf(R.id.nutrientsFragment,R.id.questionsFragment, R.id.questionsDetailFragment, R.id.bmiFragment,R.id.bodyFatFragment,
+            R.id.calorieFragment,R.id.onerepmaxFragment,R.id.commentFragment,R.id.uploadPhotoFragment,R.id.photoDetailFragment, R.id.settingsFragment)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (noBottomNavigationIds.contains(destination.id)) {
+                navView.visibility = View.GONE
+            } else {
+                navView.visibility = View.VISIBLE
+            }
+        }
+
         navView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }

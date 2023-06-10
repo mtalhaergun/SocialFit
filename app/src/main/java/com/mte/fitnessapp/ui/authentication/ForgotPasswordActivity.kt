@@ -23,16 +23,16 @@ class ForgotPasswordActivity : AppCompatActivity() {
         binding.resetBtn.setOnClickListener {
             var psifirlaemail=binding.resetEmail.text.toString().trim()
             if (TextUtils.isEmpty(psifirlaemail)){
-                binding.resetEmail.error="Lütfen email adresinizi giriniz"
+                binding.resetEmail.error="Please enter your email address!"
 
             }else{
                 auth.sendPasswordResetEmail(psifirlaemail)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             binding.resetEmail.setText("")
-                            binding.resetEmail.error="Şifre sıfırlama maili gönderildi"
+                            binding.resetEmail.error="A password reset request has been sent to your email address"
                         } else {
-                            binding.resetEmail.error="Şifre sıfırlama maili gönderilemedi"
+                            binding.resetEmail.error="Password reset failed.."
                         }
                     }
             }

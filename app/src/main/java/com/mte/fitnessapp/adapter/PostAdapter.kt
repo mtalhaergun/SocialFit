@@ -84,7 +84,6 @@ class PostAdapter(val myDataList: ArrayList<Post>,val mContext:Context) : Recycl
                 }
         }
 
-
         likebutton.setOnClickListener {
             val like = hashMapOf(
                 "id" to auth.currentUser!!.uid

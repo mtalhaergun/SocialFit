@@ -24,12 +24,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/rajdhani_bold"
                     android:text="HANDBOOK"
                     android:textAlignment="center"
                     android:textColor="#E1CB0A"
-                    android:textSize="40sp" />
+                    android:textSize="30sp" />
 
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -46,7 +46,6 @@
                     android:src="@drawable/caloriesimage"
                     app:shapeAppearanceOverlay="@style/roundImageView" />
 
-
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="wrap_content"
@@ -56,34 +55,103 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="0dp">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/supplementsImage"
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="20dp"
-                        android:adjustViewBounds="true"
-                        android:layout_weight="1"
-                        android:src="@drawable/supplementsimage"
-                        app:shapeAppearanceOverlay="@style/roundImageView" />
+                        android:background="#252525">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/musclegroupsImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="20dp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/musclegropusimage"
-                        app:shapeAppearanceOverlay="@style/roundImageView" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rajdhani_bold"
+                            android:text="CALCULATORS"
+                            android:textAlignment="center"
+                            android:textColor="#E1CB0A"
+                            android:textSize="30sp"
+                            android:layout_marginTop="30dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="70dp">
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/bmi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="15dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/weighticon"
+                                    app:shapeAppearanceOverlay="@style/roundImageView" />
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/calorie"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="15dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/calculatoricon"
+                                    app:shapeAppearanceOverlay="@style/roundImageView" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/bodyfat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="15dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/percenticon"
+                                    app:shapeAppearanceOverlay="@style/roundImageView" />
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/onerep"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="15dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/dumbbellicon"
+                                    app:shapeAppearanceOverlay="@style/roundImageView" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </FrameLayout>
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/faqtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rajdhani_bold"
+                    android:text="FREQUENTLY ASKED QUESTIONS"
+                    android:layout_below="@id/linearLayout"
+                    android:textAlignment="center"
+                    android:textColor="#E1CB0A"
+                    android:textSize="25sp"
+                    android:layout_marginTop="30dp"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/guideImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/linearLayout"
+                    android:layout_below="@id/faqtitle"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
