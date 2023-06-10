@@ -66,9 +66,16 @@ class CommentFragment : Fragment() {
                                                     value3, error3 ->
                                             if (value3!=null){
                                                 value3.documents.forEach{
-                                                    control = document.id==auth.uid
+                                                    val control2="${it.getField<String>("userId")}"
+                                                    if(document.id==auth.uid||control2==auth.uid) {
+                                                        control = true
+                                                    }else{
+                                                        control=false
+                                                    }
 
-                                                    comment.add(Comment(it.id,"${it.getField<String>("userId")}"
+                                                    comment.add(Comment(it.id,
+                                                        "${it.getField<String>("userId")}"
+                                                        ,document.id
                                                         ,"${it.getField<String>("postId")}",
                                                         "${it.getField<String>("comment")}",
                                                         "${it.getField<String>("userName")}",control))

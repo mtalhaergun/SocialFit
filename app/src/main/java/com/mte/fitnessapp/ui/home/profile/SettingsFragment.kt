@@ -92,7 +92,7 @@ class SettingsFragment : Fragment() {
         }
         binding.buttonGuncelle.setOnClickListener {
             var currentUserDb=currentuser?.let { it1->databaseReference?.child(it1.uid) }
-            currentUserDb?.removeValue()
+
             currentUserDb?.child("email")?.setValue(binding.editTextEposta.text.toString())
             currentUserDb?.child("username")?.setValue(binding.editTextAd.text.toString())
             var guncelleEmail=binding.editTextEposta.text.toString().trim()

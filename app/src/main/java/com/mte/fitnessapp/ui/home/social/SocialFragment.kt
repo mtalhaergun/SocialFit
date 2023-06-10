@@ -96,6 +96,14 @@ class SocialFragment : Fragment() {
         recyclerViewAdapter= PostAdapter(list,requireContext())
         binding.rVPost.adapter=recyclerViewAdapter
 
+        Handler().postDelayed({
+            binding.rVPost.visibility = View.VISIBLE
+            binding.fab.visibility=View.VISIBLE
+            binding.eventsShimmerInclude.root.visibility = View.GONE
+            binding.eventsShimmerInclude.cardListShimmer.stopShimmer()
+
+        },2000)
+
     }
 
 }
