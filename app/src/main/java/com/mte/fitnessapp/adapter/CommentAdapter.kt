@@ -9,6 +9,7 @@ import android.widget.*
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -24,6 +25,7 @@ import com.mte.fitnessapp.databinding.CommentRowBinding
 import com.mte.fitnessapp.model.post.Comment
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context) : RecyclerView.Adapter<CommentAdapter.DataVH>() {
     val db= Firebase.firestore
@@ -62,7 +64,6 @@ class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context)
             override fun onDataChange(snapshot: DataSnapshot) {
                 profilPhoto = (snapshot.child("profilPhoto").value.toString())
                 if (profilPhoto!="null"){
-                    Log.e("id:",profilPhoto)
                     Picasso.get().load(profilPhoto).into(profilImage)
                 }
 
@@ -81,22 +82,24 @@ class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context)
                     R.id.deleteMenu -> {
                         var comment=ArrayList<Comment>()
 
-                        db.collection("posts").document(myDataList[position].userId)
+                        db.collection("posts").document(myDataList[position].postUserId)
                             .collection("photos").document(myDataList[position].postId)
                             .collection("comment").document(myDataList[position].commentId).delete()
                             .addOnSuccessListener {
-                                db.collection("posts").document(myDataList[position].userId)
+                                db.collection("posts").document(myDataList[position].postUserId)
                                     .collection("photos").document(myDataList[position].postId)
                                     .collection("comment").orderBy("commentDate",com.google.firebase.firestore.Query.Direction.ASCENDING).addSnapshotListener { value, error ->
                                         if(value==null){}
                                         value?.documents!!.forEach {
-                                            comment.add(Comment(it.id,"${it.getField<String>("userId")}","${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",true))
+                                            comment.add(Comment(it.id,"${it.getField<String>("userId")}",myDataList[position].postUserId,"${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",true))
                                         }
 
                                         myDataList.clear()
                                         notifyDataSetChanged()
                                         myDataList.addAll(comment)
                                         notifyDataSetChanged()
+
+
 
                                     }
 

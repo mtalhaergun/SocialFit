@@ -11,6 +11,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rVPost"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -25,9 +26,17 @@
         android:layout_marginEnd="52dp"
         android:layout_marginBottom="48dp"
         android:contentDescription="hkjl"
-        android:src="@drawable/add_photo"
+        android:visibility="invisible"
+        android:src="@drawable/ic_add_photo_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+    <include
+        android:id="@+id/eventsShimmerInclude"
+        layout="@layout/shimmer_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
