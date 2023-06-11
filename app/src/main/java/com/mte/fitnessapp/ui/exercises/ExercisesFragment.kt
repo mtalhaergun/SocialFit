@@ -18,6 +18,7 @@ import com.mte.fitnessapp.databinding.FragmentExercisesBinding
 import com.mte.fitnessapp.model.exercises.ExercisesItem
 import com.mte.fitnessapp.ui.exercises.adapters.CategoryAdapter
 import com.mte.fitnessapp.ui.exercises.adapters.ExerciseAdapter
+import com.mte.fitnessapp.ui.exercises.favorites.FavoritesFragment
 import com.mte.fitnessapp.ui.exercises.listeners.CategoryClickListener
 import com.mte.fitnessapp.ui.exercises.listeners.ExerciseClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -150,6 +151,14 @@ class ExercisesFragment : Fragment() {
             activity?.finish()
         }
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            firstOpen  = true
+            val fragment = ExercisesFragment()
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
+            fragmentTransaction.commit()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
 
     }
 

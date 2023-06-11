@@ -31,6 +31,7 @@ import com.mte.fitnessapp.adapter.PostAdapter
 import com.mte.fitnessapp.databinding.FragmentProfileBinding
 import com.mte.fitnessapp.databinding.FragmentSocialBinding
 import com.mte.fitnessapp.model.post.Post
+import com.mte.fitnessapp.ui.exercises.ExercisesFragment
 import okhttp3.internal.wait
 import java.util.UUID
 
@@ -109,6 +110,15 @@ class SocialFragment : Fragment() {
             binding.eventsShimmerInclude.cardListShimmer.stopShimmer()
             recyclerViewAdapter= PostAdapter(list,requireContext())
             binding.rVPost.adapter=recyclerViewAdapter
+        }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            firstOpen  = true
+            val fragment = SocialFragment()
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.container, fragment)
+            fragmentTransaction.commit()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
 
 
