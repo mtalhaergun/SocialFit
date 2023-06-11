@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -70,9 +72,19 @@ class ExercisesFragment : Fragment() {
     fun observeEvents() {
 
         viewModel.exercisesResponse.observe(viewLifecycleOwner, Observer {
-            exercises = it
-            tempExercises = exercises
-            adapterExercise.setExercises(exercises)
+            if (it != null) {
+                exercises = it
+                tempExercises = exercises
+                adapterExercise.setExercises(exercises)
+            }
+        })
+
+        viewModel.onError.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(),it, Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            handleViews(it)
         })
 
         firstOpen = false
@@ -111,8 +123,7 @@ class ExercisesFragment : Fragment() {
             override fun onExerciseClick(exercise: ExercisesItem) {
                 val navigation = ExercisesFragmentDirections.actionExercisesFragmentToExercisesDetailFragment(null,exercise)
                 Navigation.findNavController(requireView()).navigate(navigation)
-//                val showPopUp = ExercisesDetailFragment(exercise)
-//                showPopUp.show(parentFragmentManager,"showPopUp")
+
             }
         })
         binding.exerciseRv.adapter = adapterExercise
@@ -160,6 +171,11 @@ class ExercisesFragment : Fragment() {
             binding.swipeRefreshLayout.isRefreshing = false
         }
 
+    }
+
+    private fun handleViews(isLoading : Boolean = false){
+        binding.exerciseRv.isVisible = !isLoading
+        binding.progressBar.isVisible = isLoading
     }
 
 

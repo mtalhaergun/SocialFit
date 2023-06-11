@@ -86,8 +86,8 @@ class SocialFragment : Fragment() {
                         value2.documents.forEach {
                             list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
                             recyclerViewAdapter.notifyDataSetChanged()
-
                         }
+
                     }
                 }
 
@@ -120,9 +120,6 @@ class SocialFragment : Fragment() {
             fragmentTransaction.commit()
             binding.swipeRefreshLayout.isRefreshing = false
         }
-
-
-
 
     }
 
