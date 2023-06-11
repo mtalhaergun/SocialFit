@@ -45,7 +45,7 @@ class SocialFragment : Fragment() {
 
     var databaseReference: DatabaseReference?=null
     var database: FirebaseDatabase?=null
-
+    var firstOpen = true
     var list=ArrayList<Post>()
 
     private lateinit var recyclerViewAdapter: PostAdapter
@@ -69,7 +69,6 @@ class SocialFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        list.clear()
 
 
         binding.fab.setOnClickListener {
@@ -77,32 +76,43 @@ class SocialFragment : Fragment() {
             findNavController().navigate(R.id.action_socialFragment_to_uploadPhotoFragment)
         }
 
-        Log.e("ccc","aaa")
+        if(firstOpen){
+            list.clear()
+            db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
+                .addSnapshotListener { value2, error1 ->
 
-        db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
-            .addSnapshotListener { value2, error1 ->
+                    if (value2 != null) {
+                        value2.documents.forEach {
+                            list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
+                            recyclerViewAdapter.notifyDataSetChanged()
 
-                if (value2 != null) {
-                    value2.documents.forEach {
-                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
-                        recyclerViewAdapter.notifyDataSetChanged()
-
+                        }
                     }
                 }
-            }
 
-        binding.rVPost.layoutManager= LinearLayoutManager(requireContext())
-        binding.rVPost.setHasFixedSize(true)
-        recyclerViewAdapter= PostAdapter(list,requireContext())
-        binding.rVPost.adapter=recyclerViewAdapter
+            recyclerViewAdapter= PostAdapter(list,requireContext())
+            binding.rVPost.adapter=recyclerViewAdapter
 
-        Handler().postDelayed({
+            Handler().postDelayed({
+                binding.rVPost.visibility = View.VISIBLE
+                binding.fab.visibility=View.VISIBLE
+                binding.eventsShimmerInclude.root.visibility = View.GONE
+                binding.eventsShimmerInclude.cardListShimmer.stopShimmer()
+
+            },2000)
+
+            firstOpen = false
+        }else{
             binding.rVPost.visibility = View.VISIBLE
             binding.fab.visibility=View.VISIBLE
             binding.eventsShimmerInclude.root.visibility = View.GONE
             binding.eventsShimmerInclude.cardListShimmer.stopShimmer()
+            recyclerViewAdapter= PostAdapter(list,requireContext())
+            binding.rVPost.adapter=recyclerViewAdapter
+        }
 
-        },2000)
+
+
 
     }
 

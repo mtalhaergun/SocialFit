@@ -13,7 +13,8 @@
         android:id="@+id/rVPost"
         android:visibility="invisible"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -27,9 +28,10 @@
         android:layout_marginBottom="48dp"
         android:contentDescription="hkjl"
         android:visibility="invisible"
-        android:src="@drawable/ic_add_photo_icon"
+        android:src="@drawable/add_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <include
         android:id="@+id/eventsShimmerInclude"
         layout="@layout/shimmer_layout"
