@@ -104,7 +104,6 @@ class PostAdapter(val myDataList: ArrayList<Post>,val mContext:Context) : Recycl
             override fun onDataChange(snapshot: DataSnapshot) {
                 profilPhoto = (snapshot.child("profilPhoto").value.toString())
                 if (profilPhoto!="null"){
-                    Log.e("id:",profilPhoto)
                     Picasso.get().load(profilPhoto).into(profilImage)
                 }
 
@@ -153,7 +152,6 @@ class PostAdapter(val myDataList: ArrayList<Post>,val mContext:Context) : Recycl
                             "comment" to text.text.toString(),
                             "commentDate" to Timestamp.now()
                         )
-                        Toast.makeText(holder.itemView.context,text.text, Toast.LENGTH_LONG).show()
                         db.collection("posts").addSnapshotListener { value, error ->
 
                             val documents=value!!.documents

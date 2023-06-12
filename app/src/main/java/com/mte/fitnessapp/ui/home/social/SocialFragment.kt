@@ -44,7 +44,6 @@ class SocialFragment : Fragment() {
     lateinit var imageUri: Uri
     private lateinit var auth: FirebaseAuth
 
-
     var databaseReference: DatabaseReference?=null
     var database: FirebaseDatabase?=null
     var firstOpen = true
@@ -55,7 +54,6 @@ class SocialFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database= FirebaseDatabase.getInstance()
-        auth = FirebaseAuth.getInstance()
         databaseReference=database?.reference!!.child("profile")
 
 
@@ -71,45 +69,13 @@ class SocialFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        list.clear()
-
         auth = FirebaseAuth.getInstance()
-
 
 
         binding.fab.setOnClickListener {
 
             findNavController().navigate(R.id.action_socialFragment_to_uploadPhotoFragment)
         }
-
-
-        Log.e("ccc","aaa")
-
-
-        db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
-            .addSnapshotListener { value2, error1 ->
-
-                if (value2 != null) {
-                    value2.documents.forEach {
-                        val userID=it.getField<String>("id")
-                        var currentuser = auth.currentUser
-                        databaseReference=database?.reference!!.child("profile")
-                        var userReference = databaseReference?.child(userID.toString())
-                        var userName=""
-                        userReference?.addValueEventListener(object : ValueEventListener {
-                            override fun onDataChange(snapshot: DataSnapshot) {
-                                userName = (snapshot.child("username").value.toString())
-                                list.add(Post("${it.id}",userName,"${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
-                                recyclerViewAdapter.notifyDataSetChanged()
-                            }
-
-                            override fun onCancelled(error: DatabaseError) {
-
-                            }
-                        })
-
 
         if(firstOpen){
             list.clear()
@@ -118,10 +84,23 @@ class SocialFragment : Fragment() {
 
                     if (value2 != null) {
                         value2.documents.forEach {
-                            list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
-                            recyclerViewAdapter.notifyDataSetChanged()
-                        }
+                            val userID=it.getField<String>("id")
+                            var currentuser = auth.currentUser
+                            databaseReference=database?.reference!!.child("profile")
+                            var userReference = databaseReference?.child(userID.toString())
+                            var userName=""
+                            userReference?.addValueEventListener(object : ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    userName = (snapshot.child("username").value.toString())
+                                    list.add(Post("${it.id}",userName,"${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
+                                    recyclerViewAdapter.notifyDataSetChanged()
+                                }
 
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
+                        }
 
                     }
                 }
@@ -135,7 +114,7 @@ class SocialFragment : Fragment() {
                 binding.eventsShimmerInclude.root.visibility = View.GONE
                 binding.eventsShimmerInclude.cardListShimmer.stopShimmer()
 
-            },2000)
+            },1000)
 
             firstOpen = false
         }else{
