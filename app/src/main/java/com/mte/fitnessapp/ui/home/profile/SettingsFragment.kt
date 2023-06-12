@@ -9,8 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.getField
+import com.google.firebase.ktx.Firebase
 import com.mte.fitnessapp.ui.authentication.LoginActivity
 import com.mte.fitnessapp.databinding.FragmentSettingsBinding
 import com.squareup.picasso.Picasso
@@ -21,6 +26,7 @@ class SettingsFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     var databaseReference: DatabaseReference?=null
     var database: FirebaseDatabase?=null
+    val db= Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth= FirebaseAuth.getInstance()
@@ -47,6 +53,7 @@ class SettingsFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.editTextEposta.setText(currentuser!!.email).toString()
                 binding.editTextAd.setText(snapshot.child("username").value.toString())
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -100,8 +107,15 @@ class SettingsFragment : Fragment() {
                     if (it.isSuccessful){
                         Toast.makeText(requireContext(),"Email Güncellendi",Toast.LENGTH_SHORT).show()
                         auth.signOut()
-                        val intent= Intent(requireContext(), LoginActivity::class.java)
+                        val intent = Intent(
+                            requireContext(),
+                            LoginActivity::class.java
+                        )
                         startActivity(intent)
+
+
+
+
 
                     }else{
                         Toast.makeText(requireContext(),"Email güncelleme başarısız",Toast.LENGTH_SHORT).show()

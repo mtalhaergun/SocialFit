@@ -11,6 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.ktx.Firebase
@@ -18,6 +23,8 @@ import com.mte.fitnessapp.R
 import com.mte.fitnessapp.adapter.CommentAdapter
 import com.mte.fitnessapp.databinding.FragmentCommentBinding
 import com.mte.fitnessapp.model.post.Comment
+import com.mte.fitnessapp.model.post.Post
+import com.squareup.picasso.Picasso
 
 
 class CommentFragment : Fragment() {
@@ -28,10 +35,14 @@ class CommentFragment : Fragment() {
     val db= Firebase.firestore
     val comment=ArrayList<Comment>()
     private lateinit var recyclerViewAdapter: CommentAdapter
+    var databaseReference: DatabaseReference?=null
+    var database: FirebaseDatabase?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        database= FirebaseDatabase.getInstance()
+        databaseReference=database?.reference!!.child("profile")
     }
 
     override fun onCreateView(
@@ -48,6 +59,20 @@ class CommentFragment : Fragment() {
         val data = args.postId
 
         comment.clear()
+        var currentuser = auth.currentUser
+        databaseReference=database?.reference!!.child("profile")
+        var userReference = databaseReference?.child(currentuser?.uid!!)
+        var userName=""
+        userReference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                userName = (snapshot.child("username").value.toString())
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
         db.collection("posts").addSnapshotListener { value, error ->
             if (error != null) {
                 Toast.makeText(requireContext(), error.localizedMessage, Toast.LENGTH_SHORT)
@@ -74,13 +99,28 @@ class CommentFragment : Fragment() {
                                                         control=false
                                                     }
 
-                                                    comment.add(Comment(it.id,
-                                                        "${it.getField<String>("userId")}"
-                                                        ,document.id
-                                                        ,"${it.getField<String>("postId")}",
-                                                        "${it.getField<String>("comment")}",
-                                                        "${it.getField<String>("userName")}",control))
-                                                    recyclerViewAdapter.notifyDataSetChanged()
+                                                    var currentuser = auth.currentUser
+                                                    databaseReference=database?.reference!!.child("profile")
+                                                    var userReference = databaseReference?.child(control2)
+                                                    var userName=""
+                                                    userReference?.addValueEventListener(object : ValueEventListener {
+                                                        override fun onDataChange(snapshot: DataSnapshot) {
+                                                            userName = (snapshot.child("username").value.toString())
+                                                            comment.add(Comment(it.id,
+                                                                "${it.getField<String>("userId")}"
+                                                                ,document.id
+                                                                ,"${it.getField<String>("postId")}",
+                                                                "${it.getField<String>("comment")}",
+                                                                userName,control))
+                                                            recyclerViewAdapter.notifyDataSetChanged()
+                                                        }
+
+                                                        override fun onCancelled(error: DatabaseError) {
+
+                                                        }
+                                                    })
+
+
                                                 }
                                             }
                                         }
