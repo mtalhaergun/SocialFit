@@ -66,7 +66,6 @@ class RegisterActivity : AppCompatActivity() {
                         val currentUserDb = databaseReference?.child((currentUser?.uid!!))
                         currentUserDb?.child("username")?.setValue(uyeadsoyad)
                         currentUserDb?.child("email")?.setValue(uyemail)
-                        currentUserDb?.child("sifre")?.setValue(uyesifre)
                         currentUserDb?.child("profilPhoto")?.setValue("null")
                         Toast.makeText(this,"Your registration is successful!",Toast.LENGTH_SHORT).show()
                         auth.currentUser?.sendEmailVerification()?.addOnSuccessListener {

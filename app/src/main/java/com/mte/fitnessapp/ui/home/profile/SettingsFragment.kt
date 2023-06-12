@@ -72,7 +72,7 @@ class SettingsFragment : Fragment() {
         binding.deleteAccount.setOnClickListener {
             currentuser?.delete()?.addOnCompleteListener {
                 if (it.isSuccessful){
-                    Toast.makeText(requireContext(),"Hesabınız Silindi", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Your Account Has Been Deleted!", Toast.LENGTH_LONG).show()
                     auth.signOut()
                     val intent= Intent(requireContext(), LoginActivity::class.java)
                     startActivity(intent)
@@ -90,7 +90,7 @@ class SettingsFragment : Fragment() {
                 auth.sendPasswordResetEmail(psifirlaemail)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(requireContext(),"Şifre sıfırlama maili gönderildi", Toast.LENGTH_LONG).show()
+                            Toast.makeText(requireContext(),"Password reset mail has been sent", Toast.LENGTH_LONG).show()
                         }
                     }
             }
@@ -105,7 +105,7 @@ class SettingsFragment : Fragment() {
             if(binding.editTextAd.text.toString()!=currentuser?.email){
                 currentuser!!.updateEmail(guncelleEmail).addOnCompleteListener {
                     if (it.isSuccessful){
-                        Toast.makeText(requireContext(),"Email Güncellendi",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),"Email Updated",Toast.LENGTH_SHORT).show()
                         auth.signOut()
                         val intent = Intent(
                             requireContext(),
@@ -118,7 +118,7 @@ class SettingsFragment : Fragment() {
 
 
                     }else{
-                        Toast.makeText(requireContext(),"Email güncelleme başarısız",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),"Email update failed",Toast.LENGTH_SHORT).show()
                     }
                 }
             }
