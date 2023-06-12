@@ -28,6 +28,7 @@ import com.google.firebase.storage.ktx.storage
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentProfileBinding
 import com.mte.fitnessapp.model.post.Post
+import com.mte.fitnessapp.ui.home.social.SocialFragment
 import com.squareup.picasso.Picasso
 import java.util.UUID
 
@@ -133,6 +134,14 @@ class ProfileFragment : Fragment() {
 
         val spacing = resources.getDimensionPixelSize(R.dimen.grid_spacing)
         binding.photoRv.addItemDecoration(GridSpacingItemDecoration(3, spacing))
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            val fragment = ProfileFragment()
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.container, fragment)
+            fragmentTransaction.commit()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
 
     }
 

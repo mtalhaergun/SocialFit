@@ -78,7 +78,7 @@ class ExercisesDetailFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
         _binding = null
     }
 

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E1CB0A"
     tools:context=".ui.home.profile.ProfileFragment">
 
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E1CB0A">
 
         <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="125dp"
-                android:background="@drawable/profilebg"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="125dp"
+            android:background="@drawable/profilebg"
+            android:orientation="vertical">
 
 
             <TextView
@@ -26,7 +30,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="40dp"
                 android:textAlignment="center"
-                android:text="Talha Ergün"
+                android:text=""
                 android:textColor="#CD252525"
                 android:textSize="29sp"
                 android:textStyle="bold" />
@@ -45,48 +49,34 @@
 
         </RelativeLayout>
 
-<!--    <com.mikhaellopez.circularimageview.CircularImageView-->
-<!--        android:layout_width="160dp"-->
-<!--        android:layout_height="160dp"-->
-<!--        android:layout_marginStart="123dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:src="@drawable/avatar"-->
-<!--        app:civ_border_color="#EFEEEE"-->
-<!--        app:civ_border_width="8dp"-->
-<!--        app:civ_shadow="true"-->
-<!--        app:civ_shadow_color="#353535"-->
-<!--        app:civ_shadow_radius="5dp"-->
-<!--        />-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profil_photo"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/avatar"
+                app:civ_border_color="#EFEEEE"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#353535"
+                app:civ_shadow_radius="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/settingsImage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_baseline_settings_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/profil_photo"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:src="@drawable/avatar"
-            app:civ_border_color="#EFEEEE"
-            app:civ_border_width="4dp"
-            app:civ_shadow="true"
-            app:civ_shadow_color="#353535"
-            app:civ_shadow_radius="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/settingsImage"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/ic_baseline_settings_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+    </FrameLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.mte.fitnessapp.R
 import com.mte.fitnessapp.databinding.FragmentNutrientsBinding
+import com.mte.fitnessapp.ui.home.profile.ProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,32 +53,56 @@ class NutrientsFragment : Fragment() {
         }
 
         viewModel.nutrientsResponse.observe(viewLifecycleOwner, Observer {
-            if(it.size == 1){
-                binding.nutrient = it[0]
-                nutrient.edit().putString("nutrient", it[0].name).apply()
-                val walkCalorie = (it[0].calories * 0.24).toInt()
-                val workoutCalorie = (it[0].calories * 0.19).toInt()
-                val runningCalorie = (it[0].calories * 0.14).toInt()
-                val bicycleCalorie = (it[0].calories * 0.13).toInt()
-                binding.textViewWalking.text = "You have to walk for " + walkCalorie.toString() + " minutes"
-                binding.textViewWorkout.text = "You have to workout for " + workoutCalorie.toString() + " minutes"
-                binding.textViewRunning.text = "You have to run for " + runningCalorie.toString() + " minutes"
-                binding.textViewBicycle.text = "You have to cycle for " + bicycleCalorie.toString() + " minutes"
-            }else if (it.size > 1){
-                Toast.makeText(context,"Please only search for a single nutrient name",Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(context,"Please search for a valid nutrient name",Toast.LENGTH_SHORT).show()
+            if (it != null) {
+                if(it.size == 1){
+                    binding.nutrient = it[0]
+                    nutrient.edit().putString("nutrient", it[0].name).apply()
+                    val walkCalorie = (it[0].calories * 0.24).toInt()
+                    val workoutCalorie = (it[0].calories * 0.19).toInt()
+                    val runningCalorie = (it[0].calories * 0.14).toInt()
+                    val bicycleCalorie = (it[0].calories * 0.13).toInt()
+                    binding.textViewWalking.text = "You have to walk for " + walkCalorie.toString() + " minutes"
+                    binding.textViewWorkout.text = "You have to workout for " + workoutCalorie.toString() + " minutes"
+                    binding.textViewRunning.text = "You have to run for " + runningCalorie.toString() + " minutes"
+                    binding.textViewBicycle.text = "You have to cycle for " + bicycleCalorie.toString() + " minutes"
+                }else if (it.size > 1){
+                    Toast.makeText(context,"Please only search for a single nutrient name",Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(context,"Please search for a valid nutrient name",Toast.LENGTH_SHORT).show()
+                }
             }
+        })
+
+        viewModel.onError.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(),it, Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            handleViews(it)
         })
 
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            val fragment = NutrientsFragment()
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.container, fragment)
+            fragmentTransaction.commit()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    private fun handleViews(isLoading : Boolean = false){
+        binding.groupLayout.isVisible = !isLoading
+        binding.progressBar.isVisible = isLoading
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
 
 }

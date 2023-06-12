@@ -1,103 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#252525"
     tools:context=".ui.home.workout.WorkoutFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#252525">
+            android:layout_margin="8dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView12"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                app:cardBackgroundColor="#E1CB0A"
+                app:cardCornerRadius="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/splashscreenlogo" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exercises"
-                android:textSize="20dp"
-                android:textColor="@color/white"
-                android:layout_margin="8dp"/>
+                android:layout_marginEnd="16dp"
+                android:text="SOCIALFIT"
+                android:textColor="#E1CB0A"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/homeImage"
+                app:layout_constraintEnd_toEndOf="@+id/homeImage" />
+
+            <ImageView
+                android:id="@+id/homeImage"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/homepageimage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView13"
+                android:layout_width="140dp"
+                android:layout_height="660dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#E1CB0A"
+                app:cardCornerRadius="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/homeImage"
+                app:layout_constraintTop_toBottomOf="@+id/homeImage" />
+
+            <TextView
+                android:id="@+id/exercisesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="SHAPE YOUR BODY"
+                android:textColor="#E1CB0A"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/exercisesImage"
+                app:layout_constraintEnd_toStartOf="@+id/materialCardView13"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/exercisestext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Build your body by doing exercises in the most efficient way"
+                android:textAlignment="center"
+                android:textColor="#EAEAEA"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/exercisesImage"
+                app:layout_constraintEnd_toStartOf="@+id/exercisesImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/exercisesImage" />
 
             <ImageView
                 android:id="@+id/exercisesImage"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/exercisesimage" />
+                android:layout_width="220dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="16dp"
+                android:translationZ="1dp"
+                android:src="@drawable/exercisesimage"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView13"
+                app:layout_constraintTop_toTopOf="@+id/materialCardView13" />
+
             <TextView
+                android:id="@+id/exercisesClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="Workouts"
-                android:textSize="20dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="23dp"/>
+                android:text="Click to see all exercises"
+                android:textColor="#E1CB0A"
+                android:textSize="18sp"
+                android:translationZ="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/exercisesImage"
+                app:layout_constraintEnd_toEndOf="@+id/exercisesImage"
+                app:layout_constraintStart_toStartOf="@+id/exercisesImage" />
 
             <ImageView
-                android:id="@+id/bicepsImage"
+                android:id="@+id/calculateImage"
+                android:layout_width="220dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/calculatorimage"
+                android:translationZ="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/socialImage"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView13"
+                app:layout_constraintTop_toBottomOf="@+id/exercisesImage" />
+
+            <TextView
+                android:id="@+id/calculatorText"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="9dp"
-                android:src="@drawable/bicepsimage" />
+                android:layout_height="wrap_content"
+                android:text="KNOW YOUR BODY"
+                android:textColor="#E1CB0A"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/calculateImage"
+                app:layout_constraintEnd_toStartOf="@+id/materialCardView13"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/calculatortext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Know your body and manage your body's requirements"
+                android:textAlignment="center"
+                android:textColor="#EAEAEA"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/calculateImage"
+                app:layout_constraintEnd_toStartOf="@+id/calculateImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/calculateImage" />
+
+            <TextView
+                android:id="@+id/socialText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SOCIALIZE"
+                android:textColor="#E1CB0A"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/socialImage"
+                app:layout_constraintEnd_toStartOf="@+id/materialCardView13"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/socialtext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Don't forget to socialize while workout"
+                android:textAlignment="center"
+                android:textColor="#EAEAEA"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/socialImage"
+                app:layout_constraintEnd_toStartOf="@+id/socialImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/socialImage" />
 
             <ImageView
-                android:id="@+id/tricepsImage"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/tricepsimage"/>
-            <ImageView
-                android:id="@+id/chestImage"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/chestimage"/>
-            <ImageView
-                android:id="@+id/backImage"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/backimage"/>
-            <ImageView
-                android:id="@+id/absImage"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/absimage"/>
-            <ImageView
-                android:id="@+id/shouldersImage"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/shouldersimage"/>
-            <ImageView
-                android:id="@+id/legsImage"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/legsimage"
-                android:layout_marginBottom="15dp"/>
+                android:id="@+id/socialImage"
+                android:layout_width="220dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/socialimage"
+                android:translationZ="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/materialCardView13"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView13" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 </FrameLayout>

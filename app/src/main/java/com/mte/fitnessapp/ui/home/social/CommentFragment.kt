@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.ktx.Firebase
+import com.mte.fitnessapp.R
 import com.mte.fitnessapp.adapter.CommentAdapter
 import com.mte.fitnessapp.databinding.FragmentCommentBinding
 import com.mte.fitnessapp.model.post.Comment
@@ -56,7 +57,7 @@ class CommentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val args: CommentFragmentArgs by navArgs()
         val data = args.postId
-        Log.e("pppp",data)
+
         comment.clear()
         var currentuser = auth.currentUser
         databaseReference=database?.reference!!.child("profile")
@@ -143,6 +144,9 @@ class CommentFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
     
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
@@ -155,6 +156,15 @@ class FavoritesFragment : Fragment() {
 
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            firstOpen  = true
+            val fragment = FavoritesFragment()
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
+            fragmentTransaction.commit()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
 
     }
