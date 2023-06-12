@@ -58,12 +58,12 @@ class CommentFragment : Fragment() {
         val args: CommentFragmentArgs by navArgs()
         val data = args.postId
 
-        comment.clear()
+
         var currentuser = auth.currentUser
         databaseReference=database?.reference!!.child("profile")
         var userReference = databaseReference?.child(currentuser?.uid!!)
         var userName=""
-        userReference?.addValueEventListener(object : ValueEventListener {
+        userReference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 userName = (snapshot.child("username").value.toString())
 
@@ -73,67 +73,66 @@ class CommentFragment : Fragment() {
 
             }
         })
-        db.collection("posts").addSnapshotListener { value, error ->
-            if (error != null) {
-                Toast.makeText(requireContext(), error.localizedMessage, Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                if (value != null) {
-                    val documents = value.documents
-                    for (document in documents) {
-                        db.collection("posts").document(document.id).collection("photos")
-                        .addSnapshotListener { value2, error1 ->
-                            if (value2 != null) {
-                                value2.documents.forEach {
-                                    if (it.id==data){
-                                        db.collection("posts").document(document.id).collection("photos")
-                                            .document(it.id).collection("comment").orderBy("commentDate",
-                                                com.google.firebase.firestore.Query.Direction.ASCENDING).addSnapshotListener {
-                                                    value3, error3 ->
-                                            if (value3!=null){
-                                                value3.documents.forEach{
-                                                    val control2="${it.getField<String>("userId")}"
-                                                    if(document.id==auth.uid||control2==auth.uid) {
-                                                        control = true
-                                                    }else{
-                                                        control=false
-                                                    }
+        db.collection("posts").get().addOnSuccessListener { snapshot ->
+            comment.clear()
 
-                                                    var currentuser = auth.currentUser
-                                                    databaseReference=database?.reference!!.child("profile")
-                                                    var userReference = databaseReference?.child(control2)
-                                                    var userName=""
-                                                    userReference?.addValueEventListener(object : ValueEventListener {
-                                                        override fun onDataChange(snapshot: DataSnapshot) {
-                                                            userName = (snapshot.child("username").value.toString())
-                                                            comment.add(Comment(it.id,
-                                                                "${it.getField<String>("userId")}"
-                                                                ,document.id
-                                                                ,"${it.getField<String>("postId")}",
-                                                                "${it.getField<String>("comment")}",
-                                                                userName,control))
-                                                            recyclerViewAdapter.notifyDataSetChanged()
-                                                        }
-
-                                                        override fun onCancelled(error: DatabaseError) {
-
-                                                        }
-                                                    })
+            val documents = snapshot.documents
+            for (document in documents) {
+                db.collection("posts").document(document.id).collection("photos").get().addOnSuccessListener { snapshot2 ->
+                    val photos = snapshot2.documents
+                    for (photo in photos) {
+                        if (photo.id == data) {
+                            db.collection("posts").document(document.id).collection("photos")
+                                .document(photo.id).collection("comment")
+                                .orderBy("commentDate", com.google.firebase.firestore.Query.Direction.ASCENDING)
+                                .get().addOnSuccessListener { snapshot3 ->
+                                    val comments = snapshot3.documents
+                                    comments.forEach {it2->
+                                        val control2 = it2.getField<String>("userId")
+                                        Log.e("aaaaaaaa",control2.toString())
+                                        Log.e(auth.uid,control2.toString())
 
 
+                                        var currentuser = auth.currentUser
+                                        databaseReference = database?.reference!!.child("profile")
+                                        var userReference = databaseReference?.child(control2!!)
+                                        var userName = ""
+                                        userReference?.addListenerForSingleValueEvent(object : ValueEventListener {
+                                            override fun onDataChange(snapshot: DataSnapshot) {
+                                                Log.e("control",control.toString())
+                                                if (document.id == auth.uid.toString() || control2.toString() == auth.uid.toString()) {
+                                                    control = true
+                                                    Log.e("control:",control.toString())
+                                                } else {
+                                                    control = false
                                                 }
+                                                userName = snapshot.child("username").value.toString()
+                                                comment.add(
+                                                    Comment(
+                                                        it2.id,
+                                                        it2.getField<String>("userId")!!,
+                                                        document.id,
+                                                        it2.getField<String>("postId")!!,
+                                                        it2.getField<String>("comment")!!,
+                                                        userName,
+                                                        control
+                                                    )
+                                                )
+                                                recyclerViewAdapter.notifyDataSetChanged()
                                             }
-                                        }
+
+                                            override fun onCancelled(error: DatabaseError) {
+
+                                            }
+                                        })
                                     }
                                 }
-
-                            }
                         }
                     }
                 }
-
             }
-
+        }.addOnFailureListener { exception ->
+            // İstek sırasında bir hata oluştu
         }
         binding.rVComment.layoutManager= LinearLayoutManager(requireContext())
         binding.rVComment.setHasFixedSize(true)

@@ -71,7 +71,6 @@ class PostAdapter(val myDataList: ArrayList<Post>,val mContext:Context) : Recycl
         textView.text=myDataList[temp].userName
         textViewName.text=myDataList[temp].userName
         textViewCaption.text=myDataList[temp].caption
-        Log.e("asdddd",myDataList.size.toString())
         Picasso.get().load(myDataList[temp].imageUrl).into(image)
         db.collection("photos").document(myDataList[temp].id).collection("likes")
             .addSnapshotListener { value, error ->

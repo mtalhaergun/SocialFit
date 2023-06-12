@@ -85,32 +85,9 @@ class CommentAdapter(var myDataList: ArrayList<Comment>, val mContext : Context)
                         db.collection("posts").document(myDataList[position].postUserId)
                             .collection("photos").document(myDataList[position].postId)
                             .collection("comment").document(myDataList[position].commentId).delete()
-                            .addOnSuccessListener {
-                                db.collection("posts").document(myDataList[position].postUserId)
-                                    .collection("photos").document(myDataList[position].postId)
-                                    .collection("comment").orderBy("commentDate",com.google.firebase.firestore.Query.Direction.ASCENDING).addSnapshotListener { value, error ->
-                                        if(value==null){}
-                                        value?.documents!!.forEach {
-                                            comment.add(Comment(it.id,"${it.getField<String>("userId")}",myDataList[position].postUserId,"${it.getField<String>("postId")}","${it.getField<String>("comment")}","${it.getField<String>("userName")}",true))
-                                        }
+                        myDataList.removeAt(position) // Listedeki ilgili öğeyi sil
+                        notifyItemRemoved(position)
 
-                                        myDataList.clear()
-                                        notifyDataSetChanged()
-                                        myDataList.addAll(comment)
-                                        notifyDataSetChanged()
-
-
-
-                                    }
-
-
-
-
-                            }
-                            .addOnFailureListener { e ->
-                                // Silme işlemi başarısız olduğunda yapılacak işlemler
-                                println("Belge silme hatası: $e")
-                            }
                         true
                     }
                     else -> false
