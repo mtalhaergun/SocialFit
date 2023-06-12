@@ -43,6 +43,7 @@ class SocialFragment : Fragment() {
     lateinit var imageUri: Uri
     private lateinit var auth: FirebaseAuth
 
+
     var databaseReference: DatabaseReference?=null
     var database: FirebaseDatabase?=null
 
@@ -53,6 +54,7 @@ class SocialFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database= FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
         databaseReference=database?.reference!!.child("profile")
 
 
@@ -68,7 +70,7 @@ class SocialFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        auth = FirebaseAuth.getInstance()
+
         list.clear()
 
 
@@ -79,13 +81,29 @@ class SocialFragment : Fragment() {
 
         Log.e("ccc","aaa")
 
+
         db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
             .addSnapshotListener { value2, error1 ->
 
                 if (value2 != null) {
                     value2.documents.forEach {
-                        list.add(Post("${it.id}","${it.getField<String>("userName")}","${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
-                        recyclerViewAdapter.notifyDataSetChanged()
+                        val userID=it.getField<String>("id")
+                        var currentuser = auth.currentUser
+                        databaseReference=database?.reference!!.child("profile")
+                        var userReference = databaseReference?.child(userID.toString())
+                        var userName=""
+                        userReference?.addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                userName = (snapshot.child("username").value.toString())
+                                list.add(Post("${it.id}",userName,"${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
+                                recyclerViewAdapter.notifyDataSetChanged()
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+
+                            }
+                        })
+
 
                     }
                 }
