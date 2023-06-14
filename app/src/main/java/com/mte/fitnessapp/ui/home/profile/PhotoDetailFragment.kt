@@ -162,7 +162,7 @@ class PhotoDetailFragment : Fragment() {
                             .collection("photos").document(data.id).delete().addOnSuccessListener {
                                 db.collection("photos").document(data.id).delete()
                                     .addOnSuccessListener {
-                                        findNavController().navigate(R.id.action_photoDetailFragment_to_profileFragment)
+                                        findNavController().popBackStack()
                                     }
                             }
                         true

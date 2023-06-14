@@ -1,11 +1,14 @@
 package com.mte.fitnessapp.ui.exercises.favorites
 
+import android.content.Context
 import android.graphics.Rect
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.appcompat.widget.SearchView
@@ -132,6 +135,15 @@ class FavoritesFragment : Fragment() {
     }
 
     fun listeners(){
+
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+
+        if (networkInfo == null || !networkInfo.isConnected) {
+            binding.exerciseRv.visibility = View.GONE
+            Toast.makeText(context, "Network Error!", Toast.LENGTH_SHORT).show()
+        }
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false

@@ -74,7 +74,7 @@ class NutrientsFragment : Fragment() {
         })
 
         viewModel.onError.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(),it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),"Error! Please try refresh!", Toast.LENGTH_LONG).show()
         })
 
         viewModel.isLoading.observe(viewLifecycleOwner, Observer {
