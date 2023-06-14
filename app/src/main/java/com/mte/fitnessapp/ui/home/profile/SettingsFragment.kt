@@ -1,6 +1,8 @@
 package com.mte.fitnessapp.ui.home.profile
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -72,13 +74,15 @@ class SettingsFragment : Fragment() {
         binding.deleteAccount.setOnClickListener {
             currentuser?.delete()?.addOnCompleteListener {
                 if (it.isSuccessful){
-                    Toast.makeText(requireContext(),"Your Account Has Been Deleted!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Your account has been deleted!", Toast.LENGTH_LONG).show()
                     auth.signOut()
                     val intent= Intent(requireContext(), LoginActivity::class.java)
                     startActivity(intent)
                     activity?.finish()
                     var currentUserDb=currentuser?.let { it1 -> databaseReference?.child(it1.uid) }
                     currentUserDb?.removeValue()
+                }else{
+                    Toast.makeText(requireContext(),"Your account could not be deleted", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -91,6 +95,8 @@ class SettingsFragment : Fragment() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(requireContext(),"Password reset mail has been sent", Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(requireContext(),"Failed to send password reset email", Toast.LENGTH_LONG).show()
                         }
                     }
             }
@@ -99,13 +105,14 @@ class SettingsFragment : Fragment() {
         binding.buttonGuncelle.setOnClickListener {
             var currentUserDb=currentuser?.let { it1->databaseReference?.child(it1.uid) }
 
-            currentUserDb?.child("email")?.setValue(binding.editTextEposta.text.toString())
-            currentUserDb?.child("username")?.setValue(binding.editTextAd.text.toString())
+
             var guncelleEmail=binding.editTextEposta.text.toString().trim()
-            if(binding.editTextAd.text.toString()!=currentuser?.email){
+            if(binding.editTextAd.text.toString()!=currentuser?.email && guncelleEmail != ""){
                 currentuser!!.updateEmail(guncelleEmail).addOnCompleteListener {
                     if (it.isSuccessful){
-                        Toast.makeText(requireContext(),"Email Updated",Toast.LENGTH_SHORT).show()
+                        currentUserDb?.child("email")?.setValue(binding.editTextEposta.text.toString())
+                        currentUserDb?.child("username")?.setValue(binding.editTextAd.text.toString())
+                        Toast.makeText(requireContext(),"Updated",Toast.LENGTH_SHORT).show()
                         auth.signOut()
                         val intent = Intent(
                             requireContext(),
@@ -113,15 +120,34 @@ class SettingsFragment : Fragment() {
                         )
                         startActivity(intent)
 
-
-
-
-
                     }else{
-                        Toast.makeText(requireContext(),"Email update failed",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),"Update failed!",Toast.LENGTH_SHORT).show()
                     }
                 }
+            }else{
+                Toast.makeText(requireContext(),"Update failed!",Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.deleteProfilePicture.setOnClickListener {
+            userReference?.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                    val networkInfo = connectivityManager.activeNetworkInfo
+
+                    if (networkInfo == null || !networkInfo.isConnected) {
+
+                        Toast.makeText(context, "Deletion failed!", Toast.LENGTH_SHORT).show()
+                    }else{
+                        val profilPhotoRef = snapshot.child("profilPhoto")
+                        profilPhotoRef.ref.removeValue()
+                        Toast.makeText(context, "Deletion successful!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
         }
 
         binding.backButton.setOnClickListener {

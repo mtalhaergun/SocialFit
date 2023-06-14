@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="14dp"
-                android:text="Talha Ergün"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"
-            android:text="3 likes"
+            android:text="0 likes"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black"
-                android:text="Talha Ergün"
+                android:text=""
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="5dp"
-                android:text="Caption"
+                android:text=""
                 android:textColor="@android:color/black"
                 android:textSize="15sp" />
 
@@ -116,7 +116,7 @@
             android:layout_height="16dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="12dp"
             android:text="View All Comments"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp" />

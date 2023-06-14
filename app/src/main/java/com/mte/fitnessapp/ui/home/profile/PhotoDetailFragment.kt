@@ -30,21 +30,21 @@ import com.squareup.picasso.Picasso
 
 class PhotoDetailFragment : Fragment() {
 
-    private var _binding : FragmentPhotoDetailBinding? = null
+    private var _binding: FragmentPhotoDetailBinding? = null
     private val binding get() = _binding!!
-    val db= Firebase.firestore
+    val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         auth= FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPhotoDetailBinding.inflate(inflater,container,false)
+        _binding = FragmentPhotoDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,29 +52,46 @@ class PhotoDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val args: PhotoDetailFragmentArgs by navArgs()
         val data = args.post
-        binding.publisherUserNamePost.text=data.userName
-        binding.publisher.text=data.userName
-        binding.postCaption.text=data.caption
+        binding.publisherUserNamePost.text = data.userName
+        binding.publisher.text = data.userName
+        binding.postCaption.text = data.caption
         Picasso.get().load(data.imageUrl).into(binding.postImage)
+        db.collection("photos").document(data.id).collection("likes")
+            .addSnapshotListener { value, error ->
+                val values = value!!.documents
+                binding.likes.text ="${values.size} likes"
+            }
 
 
-
-
-        val database= FirebaseDatabase.getInstance()
-        val databaseReference=database?.reference!!.child("profile")
+        val database = FirebaseDatabase.getInstance()
+        val databaseReference = database?.reference!!.child("profile")
         var currentuser = auth.currentUser
         var userReference = databaseReference?.child(currentuser?.uid!!)
         var userName = ""
 
+        userReference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var profilphoto = (snapshot.child("profilPhoto").value.toString())
+                if (profilphoto!="null"){
+                    Picasso.get().load(profilphoto).into(binding.publisherProfileImagePost)
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
         binding.postImageCommentBtn.setOnClickListener {
 
 
-            val builder= AlertDialog.Builder(requireContext())
+            val builder = AlertDialog.Builder(requireContext())
 
             builder.setTitle("Comment")
-            val text= EditText(requireContext())
+            val text = EditText(requireContext())
             builder.setView(text)
-            builder.setPositiveButton("Publish"){_,_->
+            builder.setPositiveButton("Publish") { _, _ ->
                 userReference?.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -87,38 +104,41 @@ class PhotoDetailFragment : Fragment() {
                             "comment" to text.text.toString(),
                             "commentDate" to Timestamp.now()
                         )
-                        Toast.makeText(requireContext(),text.text, Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), text.text, Toast.LENGTH_LONG).show()
                         db.collection("posts").addSnapshotListener { value, error ->
 
-                            val documents=value!!.documents
-                            documents.forEach{it2->
-                                db.collection("posts").document(it2.id).collection("photos").addSnapshotListener { value2, error ->
-                                    val photos=value2!!.documents
-                                    photos.forEach{
-                                        if (it.id==data.id){
-                                            db.collection("posts")
-                                                .document(it2.id)
-                                                .collection("photos")
-                                                .document(data.id).collection("comment")
-                                                .add(comment)
+                            val documents = value!!.documents
+                            documents.forEach { it2 ->
+                                db.collection("posts").document(it2.id).collection("photos")
+                                    .addSnapshotListener { value2, error ->
+                                        val photos = value2!!.documents
+                                        photos.forEach {
+                                            if (it.id == data.id) {
+                                                db.collection("posts")
+                                                    .document(it2.id)
+                                                    .collection("photos")
+                                                    .document(data.id).collection("comment")
+                                                    .add(comment)
+                                            }
                                         }
                                     }
-                                }
                             }
                         }
                     }
+
                     override fun onCancelled(error: DatabaseError) {
                     }
                 })
             }
             builder.setCancelable(true)
-            val alert=builder.create()
+            val alert = builder.create()
             alert.show()
         }
 
 
         binding.viewComments.setOnClickListener {
-            val action= PhotoDetailFragmentDirections.actionPhotoDetailFragmentToCommentFragment(data.id)
+            val action =
+                PhotoDetailFragmentDirections.actionPhotoDetailFragmentToCommentFragment(data.id)
             findNavController().navigate(action)
 
         }
@@ -131,19 +151,20 @@ class PhotoDetailFragment : Fragment() {
 
 
         binding.menuButton.setOnClickListener {
-            val popUpMenu = PopupMenu(requireContext(),it)
+            val popUpMenu = PopupMenu(requireContext(), it)
             popUpMenu.inflate(R.menu.photo_menu)
 
             popUpMenu.setOnMenuItemClickListener {
-                when(it.itemId){
+                when (it.itemId) {
                     R.id.deleteMenu -> {
                         db.collection("posts")
                             .document(currentuser!!.uid)
                             .collection("photos").document(data.id).delete().addOnSuccessListener {
-                            db.collection("photos").document(data.id).delete().addOnSuccessListener {
-                                findNavController().navigate(R.id.action_photoDetailFragment_to_profileFragment)
+                                db.collection("photos").document(data.id).delete()
+                                    .addOnSuccessListener {
+                                        findNavController().navigate(R.id.action_photoDetailFragment_to_profileFragment)
+                                    }
                             }
-                        }
                         true
                     }
                     else -> false

@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp">
+            android:layout_margin="4dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView12"
@@ -41,28 +41,26 @@
                 android:layout_marginEnd="16dp"
                 android:text="SOCIALFIT"
                 android:textColor="#E1CB0A"
-                android:textSize="32sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/homeImage"
-                app:layout_constraintEnd_toEndOf="@+id/homeImage" />
+                app:layout_constraintEnd_toEndOf="@+id/homeImage"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/homeImage"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_height="260dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/homepageimage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView13"
                 android:layout_width="140dp"
-                android:layout_height="660dp"
-                android:layout_marginBottom="16dp"
+                android:layout_height="680dp"
                 app:cardBackgroundColor="#E1CB0A"
                 app:cardCornerRadius="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -73,39 +71,40 @@
                 android:id="@+id/exercisesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="32dp"
                 android:text="SHAPE YOUR BODY"
                 android:textColor="#E1CB0A"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/exercisesImage"
-                app:layout_constraintEnd_toStartOf="@+id/materialCardView13"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/homeImage"
+                app:layout_constraintTop_toBottomOf="@+id/homeImage" />
 
             <TextView
                 android:id="@+id/exercisestext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="4dp"
                 android:text="Build your body by doing exercises in the most efficient way"
                 android:textAlignment="center"
                 android:textColor="#EAEAEA"
-                android:textSize="17sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@+id/exercisesImage"
                 app:layout_constraintEnd_toStartOf="@+id/exercisesImage"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/exercisesImage" />
+                app:layout_constraintTop_toTopOf="@+id/exercisesImage"
+                app:layout_constraintVertical_bias="0.515" />
 
             <ImageView
                 android:id="@+id/exercisesImage"
-                android:layout_width="220dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="64dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="200dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="6dp"
                 android:translationZ="1dp"
                 android:src="@drawable/exercisesimage"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView13"
-                app:layout_constraintTop_toTopOf="@+id/materialCardView13" />
+                app:layout_constraintTop_toBottomOf="@+id/exercisesText" />
 
             <TextView
                 android:id="@+id/exercisesClick"
@@ -113,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:text="Click to see all exercises"
                 android:textColor="#E1CB0A"
-                android:textSize="18sp"
+                android:textSize="13sp"
                 android:translationZ="1dp"
                 app:layout_constraintBottom_toBottomOf="@+id/exercisesImage"
                 app:layout_constraintEnd_toEndOf="@+id/exercisesImage"
@@ -121,36 +120,37 @@
 
             <ImageView
                 android:id="@+id/calculateImage"
-                android:layout_width="220dp"
-                android:layout_height="150dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="200dp"
+                android:layout_height="130dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/calculatorimage"
                 android:translationZ="1dp"
-                app:layout_constraintBottom_toTopOf="@+id/socialImage"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView13"
-                app:layout_constraintTop_toBottomOf="@+id/exercisesImage" />
+                app:layout_constraintTop_toBottomOf="@+id/calculatorText" />
 
             <TextView
                 android:id="@+id/calculatorText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:text="KNOW YOUR BODY"
                 android:textColor="#E1CB0A"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/calculateImage"
-                app:layout_constraintEnd_toStartOf="@+id/materialCardView13"
-                app:layout_constraintStart_toStartOf="parent" />
+
+                app:layout_constraintStart_toStartOf="@+id/homeImage"
+                app:layout_constraintTop_toBottomOf="@+id/exercisesImage" />
 
             <TextView
                 android:id="@+id/calculatortext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="4dp"
                 android:text="Know your body and manage your body's requirements"
                 android:textAlignment="center"
                 android:textColor="#EAEAEA"
-                android:textSize="17sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@+id/calculateImage"
                 app:layout_constraintEnd_toStartOf="@+id/calculateImage"
                 app:layout_constraintStart_toStartOf="parent"
@@ -162,21 +162,21 @@
                 android:layout_height="wrap_content"
                 android:text="SOCIALIZE"
                 android:textColor="#E1CB0A"
-                android:textSize="24sp"
+                android:layout_marginTop="32dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/socialImage"
-                app:layout_constraintEnd_toStartOf="@+id/materialCardView13"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/homeImage"
+                app:layout_constraintTop_toBottomOf="@+id/calculateImage" />
 
             <TextView
                 android:id="@+id/socialtext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="4dp"
                 android:text="Don't forget to socialize while workout"
                 android:textAlignment="center"
                 android:textColor="#EAEAEA"
-                android:textSize="17sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@+id/socialImage"
                 app:layout_constraintEnd_toStartOf="@+id/socialImage"
                 app:layout_constraintStart_toStartOf="parent"
@@ -184,13 +184,13 @@
 
             <ImageView
                 android:id="@+id/socialImage"
-                android:layout_width="220dp"
-                android:layout_height="150dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="200dp"
+                android:layout_height="130dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/socialimage"
                 android:translationZ="1dp"
-                app:layout_constraintBottom_toBottomOf="@+id/materialCardView13"
+                app:layout_constraintTop_toBottomOf="@+id/socialText"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView13" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

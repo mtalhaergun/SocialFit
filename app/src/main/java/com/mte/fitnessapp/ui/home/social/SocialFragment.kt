@@ -1,6 +1,10 @@
 package com.mte.fitnessapp.ui.home.social
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -79,31 +83,30 @@ class SocialFragment : Fragment() {
 
         if(firstOpen){
             list.clear()
-            db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
-                .addSnapshotListener { value2, error1 ->
+            db.collection("photos").orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING).get().addOnSuccessListener {
 
-                    if (value2 != null) {
-                        value2.documents.forEach {
-                            val userID=it.getField<String>("id")
-                            var currentuser = auth.currentUser
-                            databaseReference=database?.reference!!.child("profile")
-                            var userReference = databaseReference?.child(userID.toString())
-                            var userName=""
-                            userReference?.addValueEventListener(object : ValueEventListener {
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    userName = (snapshot.child("username").value.toString())
-                                    list.add(Post("${it.id}",userName,"${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
-                                    recyclerViewAdapter.notifyDataSetChanged()
-                                }
+                if (it != null) {
+                    it.documents.forEach {
+                        val userID=it.getField<String>("id")
+                        var currentuser = auth.currentUser
+                        databaseReference=database?.reference!!.child("profile")
+                        var userReference = databaseReference?.child(userID.toString())
+                        var userName=""
+                        userReference?.addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                userName = (snapshot.child("username").value.toString())
+                                list.add(Post("${it.id}",userName,"${it.getField<String>("imageUrl")}","${it.getField<String>("caption")}","${it.getField<String>("id")}"))
+                                recyclerViewAdapter.notifyDataSetChanged()
+                            }
 
-                                override fun onCancelled(error: DatabaseError) {
+                            override fun onCancelled(error: DatabaseError) {
 
-                                }
-                            })
-                        }
-
+                            }
+                        })
                     }
+
                 }
+            }
 
             recyclerViewAdapter= PostAdapter(list,requireContext())
             binding.rVPost.adapter=recyclerViewAdapter
@@ -113,8 +116,20 @@ class SocialFragment : Fragment() {
                 binding.fab.visibility=View.VISIBLE
                 binding.eventsShimmerInclude.root.visibility = View.GONE
                 binding.eventsShimmerInclude.cardListShimmer.stopShimmer()
+                val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val networkInfo = connectivityManager.activeNetworkInfo
+
+                if (networkInfo == null || !networkInfo.isConnected) {
+                    binding.rVPost.visibility = View.GONE
+                    binding.eventsShimmerInclude.root.visibility = View.VISIBLE
+                    binding.eventsShimmerInclude.cardListShimmer.startShimmer()
+                    binding.fab.visibility=View.GONE
+                    Toast.makeText(context, "Network Error!", Toast.LENGTH_SHORT).show()
+                }
 
             },1000)
+
+
 
             firstOpen = false
         }else{
@@ -128,6 +143,7 @@ class SocialFragment : Fragment() {
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             firstOpen  = true
+//            list.clear()
             val fragment = SocialFragment()
             val fragmentTransaction = parentFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.container, fragment)

@@ -1,6 +1,8 @@
 package com.mte.fitnessapp.ui.home.profile
 
+import android.content.Context
 import android.graphics.Rect
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -115,11 +117,9 @@ class ProfileFragment : Fragment() {
         }
 
         db.collection("posts").document(auth.uid!!).collection("photos")
-            .orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING)
-            .addSnapshotListener { value2, error1 ->
-
-                if (value2 != null) {
-                    value2.documents.forEach {
+            .orderBy("uploadDate",com.google.firebase.firestore.Query.Direction.DESCENDING).get().addOnSuccessListener {
+                if (it != null) {
+                    it.documents.forEach {
                         list.add(Post("${it.id}","${it.getField<String>("userName")}",
                             "${it.getField<String>("imageUrl")}",
                             "${it.getField<String>("caption")}",
@@ -131,6 +131,16 @@ class ProfileFragment : Fragment() {
 
         adapterPhotos = PhotosRecyclerAdapter(list)
         binding.photoRv.adapter = adapterPhotos
+
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+
+        if (networkInfo == null || !networkInfo.isConnected) {
+            list.clear()
+            binding.photoRv.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+            Toast.makeText(context, "Network Error!", Toast.LENGTH_SHORT).show()
+        }
 
         val spacing = resources.getDimensionPixelSize(R.dimen.grid_spacing)
         binding.photoRv.addItemDecoration(GridSpacingItemDecoration(3, spacing))
